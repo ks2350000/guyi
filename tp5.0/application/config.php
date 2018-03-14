@@ -23,11 +23,9 @@ return [
     // 是否支持多模块
     'app_multi_module'       => true,
     // 入口自动绑定模块
-    'auto_bind_module'       => false,
+    'auto_bind_module'       => true,
     // 注册的根命名空间
-    'root_namespace'         => [
-      
-    ],
+    'root_namespace'         => [],
     // 扩展函数文件
     'extra_file_list'        => [THINK_PATH . 'helper' . EXT],
     // 默认输出类型
@@ -141,11 +139,7 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [
-        '__PUBLICA__' => SITE_URL.'/index',
-        '__PUBLIC_INDEX__' => SITE_URL.'/static/index',
-        '__EXTEND_PATH__' =>  SITE_URL .'/extend',
-    ],
+    'view_replace_str'       => [],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -243,11 +237,21 @@ return [
         'list_rows' => 15,
     ],
 
-    'qqconnect' => [
-    'appid' => '101467328',
-    'appkey' => 'fc3538def16e91add261b2a954f724e4',
-    'callback' => '',
-    'scope' => 'get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo,check_page_fans,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idolist,add_idol,del_idol,get_tenpay_addr',
-    'errorReport' => true
-    ]
+    //验证码配置
+    'captcha' => [
+        // 验证码字符集合
+        'codeSet' => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',
+        // 验证码字体大小(px)
+        'fontSize' => 28,
+        // 是否画混淆曲线
+        'useCurve' => true,
+        // 验证码图片高度
+        'imageH' => 65,
+        // 验证码图片宽度
+        'imageW' => 200,
+        // 验证码位数
+        'length' => 4,
+        // 验证成功后是否重置
+        'reset' => true
+    ],
 ];

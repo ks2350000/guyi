@@ -18,12 +18,11 @@
     "require": {
         "php": ">=5.4.0",
         "topthink/framework": "5.0.*",
-        "kuange/qqconnect": "^0.0.1"
+        "topthink/think-captcha":"*"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "application",
-            "kuange\\": "vendor/kuange"
+            "app\\": "application"
         }
     },
     "extra": {
