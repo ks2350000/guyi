@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+	<head> 
 		<meta name="renderer" content="webkit|ie-comp|ie-stand">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta charset='utf-8'>
@@ -14,12 +14,15 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="keywords" content="">
 		<meta name="description" content="">
-		<link rel="stylesheet" type="text/css" href="__PUBLIC_INDEX__/css/base.css" />
-		<link rel="stylesheet" type="text/css" href="__PUBLIC_INDEX__/css/common.css" />
-		<link rel="stylesheet" type="text/css" href="__PUBLIC_INDEX__/css/page.css" />
-		<script src="__PUBLIC_INDEX__/js/jquery-1.8.3.min.js" type="text/javascript"></script>
-		<script type="text/javascript" src="__PUBLIC_INDEX__/js/jquery.SuperSlide.2.1.js"></script>
-		<script src="__PUBLIC_INDEX__/js/common.js"></script>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/css/common.css" />
+		
+		<!-- <link href="__STATIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> -->
+		<script src="__STATIC__/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="__STATIC__/js/jquery.SuperSlide.2.1.js"></script>
+		<script src="__STATIC__/js/common.js"></script>
+		<script src="__STATIC__/js/bootbox.min.js"></script>
+		
 	</head>
 
 <body>
@@ -29,48 +32,60 @@
 				<div class="topctent clearfix">
 					<div class="left clearfix fl">
 						<span class="fl">欢迎</span>
-						<a href="__PUBLICA__/geren/grxx.html" class="fl duyiwuer">瑾晨0212</a>
-						<span class="fl">进入商城</span>
+						<a href="{:url('geren/grxx')}" class="fl duyiwuer">瑾晨0212</a>
+						<span class="fl">入住商城</span>
 					
 					</div>
-					<div class="right clearfix fr">
+						<div class="right clearfix fr">
 						<div class="zuo clearfix fl">
 							<ul class="clearfix fl">
+								{if condition="(empty($username) eq false)"}
+									<li>
+										<a href="{:url('geren/grxx')}" class="fl">{$username}</a>
+										<a href="{:url('chuli/chuli')}" class="fl" style="margin-left: 7px; color: #980000">退出</a>
+									</li>
+									
+								{else /}
+									<li>
+										<span class="fl">您好，请</span>
+										<a href="{:url('login/sign')}" class="fl">登录</a>
+									</li>
+									<li>
+										<a href="{:url('login/register')}">
+											免费注册
+										</a>
+									</li>
+								{/if}
 								<li>
-									<span class="fl">您好，请</span>
-									<a href="sign.html" class="fl">登录</a>
-								</li>
-								<li>
-									<a href="register.html">
-										免费注册
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/art/settled.html">
+									<a href="{:url('art/settled')}">
 										艺术家入驻
 									</a>
 								</li>
 							</ul>
 						</div>						
 						<div class="shopcar-btn clearfix fl">
-							<a href="__PUBLICA__/store/shopping.html" class="box-s">
+							<a href="{:url('store/shopping')}" class="box-s">
 								购物车（0）
 							</a>
 						</div>
+						{if condition="(empty($username) eq false)"}
+						<div class="fenxiang clearfix fl"></div>
+						{else /}
 						<div class="fenxiang clearfix fl">
-							<span class="fl">分享到：</span>
+							<span class="fl">第三方应用</span>
 							<ul class="clearfix fl">
-								<li><a id="wbdj"><img src="__PUBLIC_INDEX__/img/sina.png"/></a></li>
-								<li><a id="qqdj"><img src="__PUBLIC_INDEX__/img/qq.png"/></a></li>
-								<li><a id="wxdj"><img src="__PUBLIC_INDEX__/img/wechat.png"/></a></li>
+								<li><a id="wbdj"><img src="__STATIC__/img/sina.png"/></a></li>
+								<li><a id="qqdj"><img src="__STATIC__/img/qq.png"/></a></li>
+								<li><a id="wxdj"><img src="__STATIC__/img/wechat.png"/></a></li>
 							</ul>
 						</div>
+						{/if}
 					</div>					
 				</div>
-			</div>			
+			</div>						
 			<div class="bottom clearfix">
 				<div class="logo clearfix">
-					<a href="index.html"></a>
+					<a href="{:url('index/index')}"></a>
 				</div>
 				<div class="search clearfix fr ra5">
 					<input type="text" class="fl" name="" id="" value="" placeholder="请输入您要搜索的内容" />
@@ -86,31 +101,13 @@
 		<div class="navbar clearfix">
 			<div class="content clearfix">
 				<ul>
-					<li class="cur"><a href="__PUBLICA__/index/index.html">首页</a></li>
-					<li><a href="__PUBLICA__/zhuan/special.html">专场</a></li>
-					<li><a href="__PUBLICA__/store/mall.html">商城</a></li>
-					<li><a href="__PUBLICA__/art/artist.html">艺术家</a></li>
+					<li class="cur"><a href="{:url('index/index')}">首页</a></li>
+					<li><a href="{:url('zhuan/special')}">专场</a></li>
+					<li><a href="{:url('store/mall')}">商城</a></li>
+					<li><a href="{:url('art/artist')}">艺术家</a></li>
 				</ul>
 			</div>
 		</div>
 		<!--navbar end-->
 
 
-<script type="text/javascript">
-  $(function(){
-     $("#wbdj").click(function(){
-            window.location.href = "http://guyi.hellowk.cn/ThinkPHP/Library/Org/Weibo/fa.php"; 
-           
-        });
-
-     $("#qqdj").click(function(){
-            window.location.href = "http://guyi.hellowk.cn/ThinkPHP/Library/Org/Weibo/fa.php"; 
-           
-        });
-
-     $("#wxdj").click(function(){
-            window.location.href = "http://guyi.hellowk.cn/ThinkPHP/Library/Org/Weibo/fa.php"; 
-           
-        });
-  });
-</script>

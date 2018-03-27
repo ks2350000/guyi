@@ -5,7 +5,7 @@ use app\admin\common\Base;
 class User extends Base
 {
 	//会员列表
-	public function userList()
+	public function userList() 
 	{
 		return $this->fetch('user_list');
 	}

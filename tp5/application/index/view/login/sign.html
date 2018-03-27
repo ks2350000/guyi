@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+
 <html>
 
-	{include file="public/header"}
+	{include file="../application/index/view/public/index_tou.html" /}
 	<style type="text/css">
 		
 		.us::-webkit-input-placeholder{
@@ -50,8 +50,16 @@
 						</ul>
 						<button id="submit" type="button" class="sign-btn ra5">立即登录</button>
 					</form>
-				</div>				
+				</div>	
+				<div>
+					<ul class="cxzasd" style="margin-top: 8px;overflow: hidden;">
+						<span style="float: left;">其他登录:</span>
+						<li style="float: left;  margin-left:10px;"><a class="wbdj"><img src="__STATIC__/img/weibo01.png" width="30px" /></a></li>
+						<li style="float: left; margin-left:10px;"><a class="qqdj"><img src="__STATIC__/img/qq01.png" width="30px" /></a></li>
+					</ul>
+				</div>			
 			</div>
+
 			<div class="xia clearfix">
 				<p>Copyright © 2003-2015 椿龄文化(chunlingwenhua). All Rights Reserved.</p>
 			</div>
@@ -86,6 +94,16 @@
 							$('#pass').attr('placeholder','密码或用户名错误');
 							$('#pass').addClass('us');
 							break;
+						case 4:
+							$('#pass').attr('value','');
+							$('#pass').attr('placeholder','管理员无法登入前台');
+							$('#pass').addClass('us');
+							break;
+						case 5:
+							$('#pass').attr('value','');
+							$('#pass').attr('placeholder','账号不存在');
+							$('#pass').addClass('us');
+							break;
 						default:
 							window.location.href="{:url('/index/index')}";
 						break;
@@ -96,4 +114,20 @@
 	$('#name').on('click',function () {
 		$('#have').css('display','none');
 	})
+
+
+
+
+//第三方登录
+	$(function(){
+     $(".wbdj").click(function(){
+            window.location.href = "{:url('index/oauthhui/weibo')}"; 
+           
+        });
+
+     $(".qqdj").click(function(){
+            window.location.href = "{:url('index/oauthhui/qq')}"; 
+           
+        });
+  });
 </script>

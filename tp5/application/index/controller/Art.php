@@ -1,27 +1,39 @@
 <?php
 namespace app\index\controller;
-use app\index\common\Base;
 
-class Art extends Base
+use think\Db;
+use think\Controller;
+use app\index\common\Base;
+use app\index\model\Art as ArtModel;
+
+class Art extends Controller
 {
 	public function artist()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function artist_detail()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function settled()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function zuihou()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
     
 }

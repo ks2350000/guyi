@@ -1,4 +1,5 @@
-{include file="../application/index/view/public/grxx_tou.html" /}
+{include file="public/grxx_tou" /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/page.css" />
 		<!--Main-wrap-->
 		<div class="main-wrap graybgtwo pt40 pb40">
 			<div class="wrapper">
@@ -6,13 +7,10 @@
 				<div class="main-pro-info white-box  clearfix">
 					<div class="fangda clearfix fl">
 						<div id="showbox">
-						  <img src="__PUBLIC_INDEX__/upload/14.jpg" width="1000" height="1000" />
-						  <img src="__PUBLIC_INDEX__/upload/14.jpg" width="1000" height="1000" />
-						  <img src="__PUBLIC_INDEX__/upload/14.jpg" width="1000" height="1000" />
-						  <img src="__PUBLIC_INDEX__/upload/14.jpg" width="1000" height="1000" />
-						  <img src="__PUBLIC_INDEX__/upload/14.jpg" width="1000" height="1000" />
-						  <img src="__PUBLIC_INDEX__/upload/14.jpg" width="1000" height="1000" />
-						  <img src="__PUBLIC_INDEX__/upload/14.jpg" width="1000" height="1000" />
+							{volist name="picData" id="vol"}
+						  		<img src="{$vol.pic_name}" width="1000" height="1000" />
+							{/volist}
+						 
 						</div><!--展示图片盒子-->
 						<div id="showsum"></div><!--展示图片里边-->
 						<p class="showpage">
@@ -24,33 +22,37 @@
 					<!--产品信息介绍-->
 					<div class="fr pro-intro">
 						<div class="pb20 line-bot">
-							<h3 class="fs26 darkblack lh50 ellipsis">墙角数枝梅，凌寒独自开</h3>
-							<p class="fs14 lh20 over2">这里是简介这幅画的内容这里是简介这幅画的内容这里是简介这幅画的内容这里是简介这幅画的内容这里是简介这幅画的内容</p>
-							<p class="price pt10 clearfix"><strong class="fl red fs40">¥1000</strong><em class="fl white ml20 lh20 mt20">已售：2000件</em></p>
+							<h3 class="fs26 darkblack lh50 ellipsis">{$comdata[0]['name']}</h3>
+							<p class="fs14 lh20 over2">{$comdata[0]['introduce']}</p>
+							<p class="price pt10 clearfix"><strong class="fl red fs40">¥{$comdata[0]['money']}</strong><em class="fl white ml20 lh20 mt20">已售：2000件</em></p>
 						</div>
 						<div class="pro-ctent clearfix">
 							<ul>
-								<li><span>艺 术 家 ：</span>张文标</li>
+								<li><span>艺 术 家 ：</span>{$comdata[0]['writer']}</li>
 								<li><span>尺      寸 ：</span>50×50cm</li>
-								<li><span>价      格 ：</span>2000-3000</li>
+								<li><span>价      格 ：</span>￥{$comdata[0]['money']}-￥{$comdata[0]['dmoney']}</li>
 								<li><span>材      质 ：</span>纸本设色</li>
-								<li><span>年      代 ：</span>2015年</li>
+								<li><span>年      代 ：</span>{$comdata[0]['year']}</li>
+								<li><span>数      量 ：</span>{$comdata[0]['num']}</li>
 							</ul>
 						</div>
-						<div class="pt10">
-							<div class="p-count fs14 mt20 clearfix">
-								<label class="fl lh40 darkblack">数量：</label>
-								<p class="fl count ml10 clearfix">
-									<a href="javascript:" class="fl fs30 reduction">-</a>
-									<input type="text" value="" class="fl fs16" placeholder="1">
-									<a href="javascript:" class="fl fs30 add">+</a>
-								</p>
+						<form action="{:url('fund/jiesuan')}" method="post">
+							<input type="hidden" name="comid" value="{$comdata[0]['id']}">
+							<div class="pt10">
+								<div class="p-count fs14 mt20 clearfix">
+									<label class="fl lh40 darkblack">数量：</label>
+									<p class="fl count ml10 clearfix">
+										<a id="sub" href="javascript:" class="fl fs30 reduction">-</a>
+										<input id="bookNum" type="text" name="number" value="1" class="fl fs16" placeholder="0">
+										<a id="add" href="javascript:" class="fl fs30 add">+</a>
+									</p>
+								</div>
+								<div class="but-box mt30">
+									<button type="submit" class="fl orange-but radius3" value="">立即购买</button>
+									<button type="submit" class="fl ml20 orange-but gray-but radius3" value="">加入购物车</button>
+								</div>
 							</div>
-							<div class="but-box mt30">
-								<input type="button" class="fl orange-but radius3" onclick="window.location.href='__PUBLICA__/fund/jiesuan.html'" value="立即购买">
-								<input type="button" class="fl ml20 orange-but gray-but radius3" value="加入购物车">
-							</div>
-						</div>
+						</form>
 					</div>
 					<!--/end-->
 				</div>
@@ -61,27 +63,27 @@
 					<div class="scrollWrap">
 						<ul class="prolist clearfix">
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
@@ -97,17 +99,17 @@
 						<div class="title"><strong class="fs16 white">大家都喜欢</strong></div>
 						<ul class="likelist">
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
 							<li>
-								<a href="#" class="db pic"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
+								<a href="#" class="db pic"><span><img src="__STATIC__/upload/2.jpg" alt=""/></span></a>
 								<a href="#" class="full-db tit darkblack ellipsis">墙角数枝梅</a>
 								<strong class="full-db red"><em class="fs12">¥</em>65.00</strong>
 							</li>
@@ -124,7 +126,7 @@
 						</div>
 						<div class="tab-bd">
 							<div class="tab-pal">
-								<p><img src="__PUBLIC_INDEX__/upload/zuopin.jpg" alt="" /></p>
+								<p><img src="__STATIC__/upload/zuopin.jpg" alt="" /></p>
 							</div>
 							<div class="tab-pal">
 								<div class="pro-zixun clearfix">
@@ -143,3 +145,67 @@
 		</div>
 		<!--/end-->
 		{include file="../application/index/view/public/footer.html" /}
+		<script type="text/javascript">
+		/*	function mai()
+			{
+				$.ajax({
+				type:'POST',
+				url:"{:url('mai')}",
+				data:"",
+				success:function(data){
+						console.log(data);
+						switch (data) {
+							case 3:
+								alert('请先登录');
+								break;
+							case 4:
+								alert('商家无购物权限,请使用普通账户');
+								break;
+							default:
+								window.location.href="{:url('fund/jiesuan')}";
+							break;
+						}
+					}
+				})	
+			}*/
+
+			$("#bookNum").keypress(function(b) {
+		        var keyCode = b.keyCode ? b.keyCode : b.charCode;
+		        if (keyCode != 0 && (keyCode < 48 || keyCode > 57) && keyCode != 8 && keyCode != 37 && keyCode != 39) {
+		            return false;
+		        } else {
+		            return true;
+		        }
+		    }).keyup(function(e) {
+		        var keyCode = e.keyCode ? e.keyCode : e.charCode;
+		        console.log(keyCode);
+		        if (keyCode != 8) {
+		            var numVal = parseInt($("#bookNum").val()) || 0;
+		            numVal = numVal < 1 ? 1 : numVal;
+		            $("#bookNum").val(numVal);
+		        }
+		    }).blur(function() {
+		        var numVal = parseInt($("#bookNum").val()) || 0;
+		        numVal = numVal < 1 ? 1 : numVal;
+		        $("#bookNum").val(numVal);
+		    });
+
+		    $("#add").click(function() {
+			   
+			    if ($("#bookNum").val()>={$comdata[0]['num']}) {
+			    	$("#bookNum").val() = {$comdata[0]['num']};
+			    }else {
+			    	var num = parseInt($("#bookNum").val()) || 0;
+			    	$("#bookNum").val(num + 1);
+			    }
+			    
+			});
+
+			//减去
+			$("#sub").click(function() {
+			    var num = parseInt($("#bookNum").val()) || 0;
+			    num = num - 1;
+			    num = num < 1 ? 1 : num;
+			    $("#bookNum").val(num);
+			});
+		</script>

@@ -1,32 +1,45 @@
 <?php
 namespace app\index\controller;
 
+use think\Db;
+use think\Controller;
+use app\index\model\Indent as IndentModel;
 use app\index\common\Base;
 
-class Indent extends Base
+class Indent extends Controller
 {
 	public function wddd()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function sqsh()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function pjsd()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function pjsd_pj()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function lljl()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 }

@@ -1,15 +1,23 @@
 
 		{//include file="http://www.hello.com/index/index_tou.html" /}
 		{include file="../application/index/view/public/index_tou.html" /}
-		
+		<style type="text/css">
+			#successImg{  
+			    width: 58px;  
+			    height: 58px;  
+			    margin: 0px auto;  
+			    
+			    border:none;  
+			}  
+		</style>
 		<!--navbar star-->
 		<div class="navbar clearfix">
 			<div class="content clearfix">
 				<ul>
-					<li><a href="__PUBLICA__/index/index.html">首页</a></li>
-					<li><a href="__PUBLICA__/zhuan/special.html">专场</a></li>
-					<li class="cur"><a href="__PUBLICA__/store/mall.html">商城</a></li>
-					<li><a href="__PUBLICA__/art/artist.html">艺术家</a></li>
+					<li><a href="{:url('index/index')}">首页</a></li>
+					<li><a href="{:url('zhuan/special')}">专场</a></li>
+					<li class="cur"><a href="{:url('store/mall')}">商城</a></li>
+					<li><a href="{:url('art/artist')}">艺术家</a></li>
 				</ul>
 			</div>
 		</div>
@@ -30,10 +38,9 @@
 							<div class="right clearfix fl">
 								<ul>
 									<li class="cur">不限</li>
-									<li class="">书画</li>
-									<li class="">油画</li>
-									<li class="">版画</li>
-									<li class="">雕塑</li>
+									{volist name="cdata" id="value"}
+										<li class=""><a href="#">{$value.cgname}</a></li>
+									{/volist}
 								</ul>
 							</div>
 						</div>
@@ -83,336 +90,97 @@
 							</ul>
 						</div>
 					</div>
-					<div class="bottom clearfix">
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
+					<div id="" class="bottom clearfix">
+						{volist name="data->data" id="vol"}
+						
+							<div class="list clearfix transition">
+								<div class="tu clearfix">
+									<img src="{$vol.pic_name}"/>
+									<span></span>
+									
+									<div class="ycang clearfix">
+										<samp class="opa8"></samp>
+										<div class="nr clearfix">
+											<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
+											
+											<ul>
+											<li class="box-s transition" >
+												<a value="{$vol.comid}"  class="input1" href="javascript:void(0)"  >收藏</a>
+											</li>
+											<li  class="box-s transition">
+												<a value="{$vol.comid}" class="input2" href="javascript:void(0)">
+												购物车
+												</a>
+											</li>
+											</ul>
+										</div>								
+									</div>
+								</div>
+								<div class="xia clearfix box-s">
+									<p class="bt over">
+										{$vol.cname}
+									</p>
+									<div class="price clearfix">
+										<span class="fl">￥{$vol.money}.00<samp>原价￥{$vol.dmoney}.00</samp></span>
+										<a href="{:url('commodity/pro_detail',['cid'=>$vol.comid])}" class="goumai fr ra3 transition">立即购买</a>
+									</div>
 								</div>
 							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
-						<div class="list clearfix transition">
-							<div class="tu clearfix">
-								<img src="__PUBLIC_INDEX__/upload/2.jpg"/>
-								<span></span>
-								
-								<div class="ycang clearfix">
-									<samp class="opa8"></samp>
-									<div class="nr clearfix">
-										<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-										<ul>
-											<li class="box-s transition">收藏</li>
-											<li class="box-s transition">购物车</li>
-										</ul>
-									</div>								
-								</div>
-							</div>
-							<div class="xia clearfix box-s">
-								<p class="bt over">
-									尹毅画作
-								</p>
-								<div class="price clearfix">
-									<span class="fl">￥1000.00<samp>原价￥2000.00</samp></span>
-									<a href="pro_detail.html" class="goumai fr ra3 transition">立即购买</a>
-								</div>
-							</div>
-						</div>
+						
+						{/volist}
 					</div>
 					<div class="page clearfix ta-right">
-						<a href="#" class="pre box-s">上一页</a>
-						<a href="#">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<span>...</span>
-						<a href="#" class="next box-s">下一页</a>
-						<span class="ml10">到第</span>
-						<input type="" name="" id="" value="" />
-						<span>页</span>
-						<input type="submit" name="" id="" value="确定" />
+						<div>{$data->render}</div>
 					</div>
 				</div>
 			</div>
 			<!--sales end-->
 		</div>
 		<!--mall end-->
-		{include file="../application/index/view/public/footer.html" /}
-		
+		{include file="public/footer" /}
+<script type="text/javascript">
+			
+	$('.input1').each(function () {
+		$(this).on('click',function () {
+			var cid = $(this).attr('value');
+			var is = this;
+			$.ajax({
+					type:'POST',
+					url:"{:url('action/storeUp')}",
+					data:{'id':cid},
+					dataType:"JSON",
+					success:function(data){
+						//console.log(data);
+						switch (data) {
+							case 1:
+								jQuery.alertWindow("收藏成功");
+								break;
+							case 2:
+								jQuery.alertWindow("已收藏");
+								break;
+							case 3:
+								jQuery.alertWindow("请登录");
+								break;
+						}
+						
+					}
+			})
+		})
+	})  
+</script>
+
+<script type="text/javascript">
+			
+	jQuery.extend({  
+        alertWindow:function(e,n){var e=e,r;n===undefined?r="#00a8b7":r=n;  
+        if($("body").find(".alertWindow1").length===0){  
+            var i='<div class="alertWindow1" style="width: 100%;height: 100%; background:rgba(0,0,0,0.5);position: fixed; left:0px; top: 0px; z-index: 9999;"><div  style="width: 360px; height: 170px;background: #FFF;margin: 300px auto;border: 2px solid #CFCFCF;">'+'<div  style="width: inherit;height: 20px;">'+'<div class="alertWindowCloseButton1" style="float: right; width: 10px; height: 30px;margin-right:5px;font-family:\'microsoft yahei\';color:'+r+';cursor: pointer;"></div>'+"</div>"+'<div id="successImg" class="alertWindowTitle" style="margin-top:10px;text-align:center;font-family:\'Verdana, Geneva, Arial, Helvetica, sans-serif\';font-size: 18px;font-weight: normal;color: '+r+';">'+"</div>"+'<div class="alertWindowContent" style="width:360px;height: 40px;text-align:center;font-size: 18px;color: #7F7F7F;margin-top:10px;">'+e+"</div>"+"</div>"+"</div>";  
+            $("body").append(i);  
+            var s=$(".alertWindow1");  
+            //2秒后自动关闭窗口  
+            setTimeout(function(){s.hide()},1000);  
+        }  
+        else {$(".alertWindowContent").text(e),$(".alertWindow1").show(),setTimeout(function(){$(".alertWindow1").hide()},1000);}  
+        }  
+        })  
+		</script>

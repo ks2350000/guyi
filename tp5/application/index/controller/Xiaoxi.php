@@ -2,28 +2,37 @@
 namespace app\index\controller;
 
 use think\Db;
-use app\index\common\Base;
+use think\Controller;
 use app\index\model\Xiaoxi as XiaoxiModel;
+use app\index\common\Base;
 
-class Xiaoxi extends Base
+class Xiaoxi extends Controller
 {
 	public function xiexin()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function zixun()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function znx()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function znxdetail()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 }

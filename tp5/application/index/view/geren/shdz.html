@@ -1,45 +1,50 @@
 {include file="../application/index/view/public/grxx_tou.html" /}
 
+<style type="text/css">
+	.us::-webkit-input-placeholder{
+			color:red;
+		}
+</style>
 		<!--Main-wrap-->
 		<div class="main-wrap graybg">
 			<div class="wrapper pt40 pb40 clearfix">
 				<div class="fl slide-nav white-box">
 					<ul>
 						<li>
-							<a href="__PUBLICA__/geren/grxx.html" class="db fs16">个人信息</a>
+							<a href="{:url('geren/grxx')}" class="db fs16">个人信息</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/indent/wddd.html" class="db fs16">我的订单</a>
+							<a href="{:url('indent/wddd')}" class="db fs16">我的订单</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/indent/pjsd.html" class="db fs16">评价晒单</a>
+							<a href="{:url('indent/pjsd')}" class="db fs16">评价晒单</a>
 						</li>
 						<li class="on">
-							<a href="__PUBLICA__/geren/shdz.html" class="db fs16">收货地址</a>
+							<a href="{:url('geren/shdz')}" class="db fs16">收货地址</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/geren/wdsc.html" class="db fs16">我的收藏</a>
+							<a href="{:url('geren/wdsc')}" class="db fs16">我的收藏</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/geren/wdgz.html" class="db fs16">我的关注</a>
+							<a href="{:url('geren/wdgz')}" class="db fs16">我的关注</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/geren/xgmm.html" class="db fs16">修改密码</a>
+							<a href="{:url('geren/xgmm')}" class="db fs16">修改密码</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/fund/zhye.html" class="db fs16">账户余额</a>
+							<a href="{:url('fund/zhye')}" class="db fs16">账户余额</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/fund/zxcz.html" class="db fs16">在线充值</a>
+							<a href="{:url('fund/zxcz')}" class="db fs16">在线充值</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/indent/lljl.html" class="db fs16">退货记录</a>
+							<a href="{:url('indent/lljl')}" class="db fs16">退货记录</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/xiaoxi/zixun.html" class="db fs16">我的咨询</a>
+							<a href="{:url('xiaoxi/zixun')}" class="db fs16">我的咨询</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/xiaoxi/znx.html" class="db fs16">站内信</a>
+							<a href="{:url('xiaoxi/znx')}" class="db fs16">站内信</a>
 						</li>
 					</ul>
 				</div>
@@ -47,41 +52,45 @@
 					<div class="dark-tit line-bot">
 						<h3 class="fs26">收货地址</h3></div>
 					<div class="add-address fs14 mt20 mb30">
-						<form action="">
+						<form action="" id="addsite" method="post">
 							<p class="address-tit mb20 clearfix"><i class="fl iconfont tc">&#xe611;</i><span class="fl fs16 bold orange ml5">新增收货地址</span></p>
 							<p class="mb20 clearfix">
 								<label class="fl"><em class="red">*</em>收件人：</label>
-								<input type="text" placeholder="姓名" value="" class="fl">
+								<input type="text" name="uname" placeholder="姓名" value="" class="fl xm aa">
 								<label class="fl"><em class="red">*</em>收件人：</label>
-								<input type="text" placeholder="手机" value="" class="fl">
+								<input type="text" name="uphonenum" placeholder="手机" value="" class="fl ph aa">
 							</p>
 							<p class="mb20 clearfix">
 								<label class="fl"><em class="red f-arial">*</em>地址：</label>
-								<select name="" id="" class="fl">
-									<option value="0">省份/直辖市</option>
-									<option value="1">安徽省</option>
-								</select>
-								<select name="" id="" class="fl ml10">
-									<option value="0">城市</option>
-									<option value="1">合肥市</option>
-								</select>
-								<select name="" id="" class="fl ml10">
-									<option value="0">区县</option>
-									<option value="1">高新区</option>
-								</select>
+
+								<div data-toggle="distpicker" style="float:left;margin-top:-60px; margin-left: 93px;">
+						        <div class="form-group" style="float:left;">
+						          <label class="sr-only" for="province1"></label>
+						          <select name="shengfen" class="form-control" id="province1"></select>
+						        </div>
+						        <div class="form-group" style="float:left; margin-left: 10px;">
+						          <label class="sr-only" for="city1"></label>
+						          <select name="shi" class="form-control" id="city1"></select>
+						        </div>
+						        <div class="form-group" style="float:left; margin-left: 10px;">
+						          <label class="sr-only" for="district1"></label>
+						          <select name="xianqu" class="form-control" id="district1"></select>
+						        </div>
+						      </div>
+						      
 							</p>
 							<p class="mb20 clearfix">
 								<label class="fl">&nbsp;</label>
-								<textarea name="" id="" cols="30" rows="10" placeholder="请输入您的详细地址" class="fl"></textarea>
+								<textarea name="xiangxi" id="xx" cols="30" rows="10" placeholder="请输入您的详细地址" class="fl dz aa"></textarea>
 							</p>
 							<p class="mb20 clearfix">
 								<label class="fl">邮政编码：</label>
-								<input type="text" placeholder="邮政编码" value="" class="fl">
+								<input type="text" name="zip" placeholder="邮政编码" value="" class="fl aa">
 							</p>
 							<p class="mb20 clearfix">
 								<label class="fl">&nbsp;</label>
-								<input type="button" value="确认" class="fl orange-but radius3 fs16">
-								<input type="button" value="取消" class="fl reset-but radius3 fs16 ml10">
+								<input type="button" id="baocun" value="确认" class="fl orange-but radius3 fs16">
+								<input type="button" id="quxiao" value="取消" class="fl reset-but radius3 fs16 ml10">
 							</p>
 						</form>
 					</div>
@@ -94,24 +103,18 @@
 								<th width="10%">电话</th>
 								<th width="20%">操作</th>
 							</tr>
+							{volist name="siteData" id="vol"}
 							<tr>
-								<td>张先生</td>
-								<td>安徽省合肥市蜀山区你猜猜我办公的地点是哪里</td>
-								<td>18056225225</td>
+								<td>{$vol.site_name}</td>
+								<td>{$vol.usite}</td>
+								<td>{$vol.site_phone}</td>
 								<td>
-									<a href="javascript:" class="pl10"><i class="iconfont">&#xe60b;</i><em class="orange">删除</em></a>
+									<a href="{:url('add/delSite',['sid'=>$vol.site_id])}" class="pl10"><i class="iconfont">&#xe60b;</i><em class="orange">删除</em></a>
 									<a href="javascript:" class="pl10"><i class="iconfont">&#xe60f;</i><em class="orange">编辑</em></a>
 								</td>
 							</tr>
-							<tr>
-								<td>张先生</td>
-								<td>安徽省合肥市蜀山区你猜猜我办公的地点是哪里</td>
-								<td>18056225225</td>
-								<td>
-									<a href="javascript:" class="pl10"><i class="iconfont">&#xe60b;</i><em class="orange">删除</em></a>
-									<a href="javascript:" class="pl10"><i class="iconfont">&#xe60f;</i><em class="orange">编辑</em></a>
-								</td>
-							</tr>
+							{/volist}
+							
 						</table>
 					</div>
 
@@ -122,3 +125,51 @@
 		<!--/end-->
 
 {include file="../application/index/view/public/footer.html" /}
+	<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+	<script src="__STATIC__/js/distpicker.data.js"></script>
+	<script src="__STATIC__/js/distpicker.js"></script>
+	<script src="__STATIC__/js/main.js"></script>
+	<script type="text/javascript">
+
+	$('#baocun').on('click',function () {
+		$.ajax({
+				type:'POST',
+				url:"{:url('add/addSite')}",
+				data:$("#addsite").serialize(),
+				dataType:"JSON",
+				success:function(data){
+					console.log(data);
+					switch (data) {
+						case 'sit_name不能为空':
+							$('.xm').attr('placeholder','收货人不能为空');
+							$('.xm').addClass('us');
+							break;
+						case 'sit_phone不能为空':
+							$('.ph').attr('value','');
+							$('.ph').attr('placeholder','手机号码不能为空');
+							$('.ph').addClass('us');
+							break;
+						case 'sit_phone不符合指定规则':
+							$('.ph').val('');
+							$('.ph').attr('placeholder','手机号码格式不正确');
+							$('.ph').addClass('us');
+							break;
+						case 3:
+							$('.dz').css('display','block');
+							break;
+						case 4:
+							$('.dz').css('display','block');
+							break;
+						case 6:
+							alert('添加成功');
+							window.location.href="{:url('geren/shdz')}";
+							break;
+					}
+				}
+		})
+	})
+		$('#quxiao').on('click',function () {
+			$('.aa').val('');
+		})
+</script>
