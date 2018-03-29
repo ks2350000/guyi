@@ -6,14 +6,20 @@ class Index extends Base
 {
     public function index()
     {
-    	
-        return $this->fetch('index');
+    	$kk = new Base();
+        $kk -> rbac();
+
+        $this->assign([
+            'name'=>session('username')
+        ]);
+        return $this->fetch();
     }
 
     public function home()
     {
-    	
-    	return $this->fetch('home');
+    	$kk = new Base();
+        $kk -> rbac();
+    	return $this->fetch();
     }
 
 }

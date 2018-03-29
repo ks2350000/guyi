@@ -5,7 +5,7 @@ use think\Validate;
 class User extends Validate
 {
 	protected $rule = [
-		'username' => 'require|max:6',
+		'username' => 'require|max:25',
 		'phone'=>['require','regex'=>'^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$'],
 		'captcha'=>'require|captcha',
 		'phonenum'=>'require',

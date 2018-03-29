@@ -6,12 +6,19 @@ use app\index\validate\User;
 use app\index\validate\Dl;
 use lib\Ucpaas;
 use think\Validate;
+use think\Session;
+use think\Db;
+
+
+
 class Login extends Base
 {
-    public function index()
+    public function sign()
     {
     	
-        return $this->fetch('sign');
+        $kk = new Base();
+        $kk -> zxc();
+        return $this->fetch();
     }
 
     public function dl()
@@ -36,23 +43,31 @@ class Login extends Base
             if (empty($data_name->id)) {
                 return 2;
             }
-            session('username',$data_name->name, 'think');
+           
         } else {
             $data_name = $user->where('name',$username)->find();
             if (empty($data_name->id)) {
                 return 2;
             }
-            session('username',$username, 'think');
+          
         }
         if (($data_name->password != md5($password))) {
             return 3;
         }
+        $data_user = $user->selrbac($username);
+        if ($data_user == 1 or $data_user == 2) {
+            return 4;
+        }
+          session('username',$username, 'think');
+            $abc = 'qazxsw';
+            session('password',md5(md5($password).$abc), 'think');
+            Session::delete('openid');
+
         if (input('post.check') == 1) {
             cookie('username', $username, 3600*3);
+            cookie('password', $password, 3600*3);
         }
-        
-        return session('username');
-        
+       
     }
     public function login()
     {
@@ -61,6 +76,7 @@ class Login extends Base
         $captcha = input('post.code');
         $phonenum = input('post.phonenum');
         $password = input('post.password');
+
 
     	$data = [
 			'username'=>$username,
@@ -85,6 +101,7 @@ class Login extends Base
             return '1';
         }
 
+        
         $user->data([
             'name'  =>  $username,
             'password'  =>  md5($password),
@@ -93,29 +110,105 @@ class Login extends Base
             'created_time'  =>  time(),
         ]);
         $user->save();
-    }
-    public function reg()
-    {	 
+        $lastid = $user->id;
+        $data = ['role_id' => $lastid];
+        $zxc = Db::name('role_access')->insert($data);
 
-    	return $this->fetch('register');
+
     }
+    public function register()
+    {	 
+        $kk = new Base();
+        $kk -> zxc();
+    	return $this->fetch();
+    }
+
+    public function bangding()
+    {
+        $kk = new Base();
+        $kk -> zxc();
+        return $this->fetch();
+    }
+
+     public function reg()
+    {    
+        $kk = new Base();
+        $kk -> zxc();
+        return $this->fetch();
+    }
+
+
+
+
+
+    public function bd()
+    {
+        $user = model('User');
+        $username = input('post.username');
+        $password = input('post.password');
+
+        $validate = new Validate([
+            'username' => 'require',
+            'password' => 'require'
+        ]);
+        $data = [
+            'username' => $username,
+            'password' => $password
+        ];
+        if (!$validate->check($data)) {
+            return $validate->getError();
+        }
+        if (is_numeric($username)) {
+            $data_name = $user->where('phone',$username)->find();
+            if (empty($data_name->id)) {
+                return 2;
+            }
+            
+        } else {
+            $data_name = $user->where('name',$username)->find();
+            if (empty($data_name->id)) {
+                return 2;
+            }
+          
+        }
+        if (($data_name->password != md5($password))) {
+            return 3;
+        }
+
+        $data_user = $user->selrbac($username);
+        if ($data_user == 1 or $data_user == 2) {
+            return 4;
+        }
+
+        $openid = Session::get('openid');
+        $idstr = Session::get('idstr');
+          if (!empty($openid)) {
+                db('user')->where('name',$username)->setField('qqopenid',$openid);
+          }elseif(!empty($idstr)) {
+              db('user')->where('name',$username)->setField('wbopenid',$idstr);
+          }
+    }
+
+
+
+
 
     public function dx()
     {
     	// dump(123);    
         //初始化必填
         //填写在开发者控制台首页上的Account Sid
-        $options['accountsid']='6e99d284e21e3a041e56cc187d4aa532';
+        $options['accountsid']='ad5a82d9d04a18dda50df971b4d1688d';
         //填写在开发者控制台首页上的Auth Token
-        $options['token']='f51776ecb63f96d7031f325256c8499a';
+        $options['token']='12ab76f412ac743c1068a7890e06afe2';
 
         //初始化 $options必填
-        $appid = "1a948d2524c54fbcac93583f10143d2f";
+        $appid = "bb15a6e8e233439994a9ecc4b0a92d74";
         $ucpass = new Ucpaas($options); 
 
         $a = rand(1000,9999);
         //应用的ID，可在开发者控制台内的短信产品下查看
-        $templateid = "276143";    //可在后台短信产品→选择接入的应用→短信模板-模板ID，查看该模板ID
+        $templateid = "277567";    //可在后台短信产品→选择接入的应用→短信模板-模板ID，查看该模板ID
         $param = $a; //多个参数使用英文逗号隔开（如：param=“a,b,c”），如为参数则留空
         //return $mobile = $_POST['phonenum'];
         $mobile = input('phonenum');

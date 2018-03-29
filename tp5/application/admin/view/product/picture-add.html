@@ -17,62 +17,88 @@
 	<link href="__STATIC__/Widget/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 
 	<title>新增图片</title>
+	<style type="text/css">
+		.us::-webkit-input-placeholder{
+			color:red;
+		}
+	</style>
 </head>
 <body>
 <div class="clearfix" id="add_picture">
-<div id="scrollsidebar" class="left_Treeview">
-    <div class="show_btn" id="rightArrow"><span></span></div>
-    <div class="widget-box side_content" >
-    <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
-     <div class="side_list">
-      <div class="widget-header header-color-green2">
-          <h4 class="lighter smaller">选择产品类型</h4>
-      </div>
-      <div class="widget-body">
-          <div class="widget-main padding-8">
-              <div  id="treeDemo" class="ztree"></div>
-          </div>
-  </div>
-  </div>
-  </div>  
-  </div>
-   <div class="page_right_style">
-   <div class="type_title">添加商品</div>
-	<form action="" method="post" class="form form-horizontal" id="form-article-add">
-		<div class="clearfix cl">
-         <label class="form-label col-2"><span class="c-red">*</span>图片标题：</label>
-		 <div class="formControls col-10"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
+	<form action="{:url('proaction/addsp')}" method="post" class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
+		<div id="scrollsidebar" class="left_Treeview">
+			<div class="show_btn" id="rightArrow"><span></span></div>
+			<div class="widget-box side_content" >
+				<div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
+				<div class="side_list">
+					<div class="widget-header header-color-green2">
+						<h4 class="lighter smaller">选择产品类型</h4>
+					</div>
+					<div class="widget-body">
+						<div class="widget-main padding-8">
+							<div  id="treeDemo" class="ztree"></div>
+						</div>
+					</div>
+				</div>
+			</div>  
+		</div>
+		<div class="page_right_style">		
+			<div class="type_title">添加商品</div>
+
+			<div class="clearfix cl">
+				<label class="form-label col-2" style="width:120px;"><span class="c-red">*</span>选择商品类型：</label>
+				<div class="formControls col-10">
+					<select name="cate" style="width:400px;">
+						<option value="0">艺术品</option>
+						{volist name="data" id="value"}
+							{if condition="($value.cid != 0)"}
+								<option value="{$value.cgid}"> {$value.level}{$value.cgname}</option>
+							{/if}
+						{/volist}
+					</select>
+				</div>
+			</div>
+		<div class=" clearfix cl">
+			<label class="form-label col-2">标题：</label>
+			<div class="formControls col-10">
+				<input  type="text" class="input-text bt" value="" placeholder="必填" name="goodsname">
+			</div>
 		</div>
 		<div class=" clearfix cl">
-         <label class="form-label col-2">简略标题：</label>
-	     <div class="formControls col-10"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
-		</div>
-		<div class=" clearfix cl">
-			
 			<div class="Add_p_s">
-            <label class="form-label col-2">产品编号：</label>
-			<div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
-            </div>
+				<label class="form-label col-2">产品编号：</label>
+				<div class="formControls col-2">
+					<input type="text" class="input-text num" value="" placeholder="必填"  name="number">
+				</div>
+			</div>
 			<div class="Add_p_s">
-             <label class="form-label col-2">产&nbsp;&nbsp;&nbsp;&nbsp;地：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
+				<label class="form-label col-2">产&nbsp;&nbsp;&nbsp;&nbsp;地：</label>	
+				<div class="formControls col-2">
+					<input type="text" class="input-text" value="" placeholder="必填"  name="age">
+				</div>
 			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">材&nbsp;&nbsp;&nbsp;&nbsp;质：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
+			<div class="Add_p_s">
+				<label class="form-label col-2">产品数量：</label>	
+				<div class="formControls col-2">
+					<input type="text" class="input-text" value="" placeholder=""  name="cnum">
+				</div>
 			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">品&nbsp;&nbsp;&nbsp;&nbsp;牌：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name=""></div>
+			<div class="Add_p_s">
+				<label class="form-label col-2">&nbsp;艺术家&nbsp;：</label>	
+				<div class="formControls col-2">
+					<input type="text" class="input-text" value="" placeholder=""  name="ysj">
+				</div>
 			</div>
-             <div class="Add_p_s">
-             <label class="form-label col-2">产品重量：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="" >kg</div>
+			<div class="Add_p_s">
+				<label class="form-label col-2">尺寸/重量：</label>	
+				<div class="formControls col-2">
+					<input type="text" class="input-text" value="" placeholder="必填"  name="weight" >kg
+				</div>
 			</div>
-             <div class="Add_p_s">
-             <label class="form-label col-2">单位：</label>	
-			 <div class="formControls col-2"><span class="select-box">
-				<select class="select">
+			<div class="Add_p_s">
+				<label class="form-label col-2">单位：</label>	
+				<div class="formControls col-2"><span class="select-box">
+				<select class="select" name="unit">
 					<option>请选择</option>
 					<option value="1">件</option>
 					<option value="2">斤</option>
@@ -82,32 +108,41 @@
 				</select>
 				</span></div>
 			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">展示价格：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="" >元</div>
+			<div class="Add_p_s">
+				<label class="form-label col-2">展示价格：</label>	
+				<div class="formControls col-2">
+					<input type="text" class="input-text jg" value="" placeholder="必填"  name="dis_pirce" >元
+				</div>
 			</div>
-            <div class="Add_p_s">
-             <label class="form-label col-2">市场价格：</label>	
-			 <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="" >元</div>
+			<div class="Add_p_s">
+				<label class="form-label col-2">市场价格：</label>	
+				<div class="formControls col-2">
+					<input type="text" class="input-text yj" value="" placeholder="必填"  name="pirce" >元</div>
 			</div>
-           
-			
+
+
 		</div>
-		
+
 		<div class="clearfix cl">
 			<label class="form-label col-2">关键词：</label>
 			<div class="formControls col-10">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text" value="" placeholder="用于搜索"  name="keyword">
 			</div>
 		</div>
+
 		<div class="clearfix cl">
-			<label class="form-label col-2">内容摘要：</label>
+			<label class="form-label col-2">详细内容：</label>
 			<div class="formControls col-10">
-				<textarea name="" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)"></textarea>
-				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+				<script id="editor" type="text/plain" style="width:100%;height:400px;"></script> 
 			</div>
 		</div>
 		
+		<div class="clearfix cl">
+			<div class="Button_operation">
+				<button id="article_save_submit"  class="btn btn-primary radius" type="button"><i class="icon-save "></i>保存并提交审核</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
 		<div class="clearfix cl">
 			<label class="form-label col-2">图片上传：</label>
 			<div class="formControls col-10">
@@ -129,29 +164,9 @@
 				</div>
 			</div>
 		</div>
-         <div class="clearfix cl">
-         <label class="form-label col-2">详细内容：</label>
-			<div class="formControls col-10">
-				<script id="editor" type="text/plain" style="width:100%;height:400px;"></script> 
-             </div>
-        </div>
-        <div class="clearfix cl">
-         <label class="form-label col-2">允许评论：</label>
-			<div class="formControls col-2 skin-minimal">
-			 <div class="check-box" style=" margin-top:9px"><input type="checkbox" id="checkbox-1"><label for="checkbox-1">&nbsp;</label></div>
-             </div>
-        </div>
-		<div class="clearfix cl">
-			<div class="Button_operation">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>保存并提交审核</button>
-				<button onClick="article_save();" class="btn btn-secondary  btn-warning" type="button"><i class="icon-save"></i>保存草稿</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-			</div>
-		</div>
 	</form>
-    </div>
 </div>
-</div>
+
 <script src="__STATIC__/js/jquery-1.9.1.min.js"></script>   
 <script src="__STATIC__/assets/js/bootstrap.min.js"></script>
 <script src="__STATIC__/assets/js/typeahead-bs2.min.js"></script>
@@ -159,7 +174,7 @@
 <script src="__STATIC__/assets/laydate/laydate.js" type="text/javascript"></script>
 <script type="text/javascript" src="__STATIC__/Widget/My97DatePicker/WdatePicker.js"></script> 
 <script type="text/javascript" src="__STATIC__/Widget/icheck/jquery.icheck.min.js"></script> 
- <script type="text/javascript" src="__STATIC__/Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script> 
+<script type="text/javascript" src="__STATIC__/Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script> 
 <script type="text/javascript" src="__STATIC__/Widget/Validform/5.3.2/Validform.min.js"></script> 
 <script type="text/javascript" src="__STATIC__/Widget/webuploader/0.1.5/webuploader.min.js"></script>
 <script type="text/javascript" src="__STATIC__/Widget/ueditor/1.4.3/ueditor.config.js"></script>
@@ -226,22 +241,9 @@ var setting = {
 };
 
 var zNodes =[
-	{ id:1, pId:0, name:"商城分类列表", open:true},
-	{ id:11, pId:1, name:"蔬菜水果"},
-	{ id:111, pId:11, name:"蔬菜"},
-	{ id:112, pId:11, name:"苹果"},
-	{ id:113, pId:11, name:"大蒜"},
-	{ id:114, pId:11, name:"白菜"},
-	{ id:115, pId:11, name:"青菜"},
-	{ id:12, pId:1, name:"手机数码"},
-	{ id:121, pId:12, name:"手机 "},
-	{ id:122, pId:12, name:"照相机 "},
-	{ id:13, pId:1, name:"电脑配件"},
-	{ id:131, pId:13, name:"手机 "},
-	{ id:122, pId:13, name:"照相机 "},
-	{ id:14, pId:1, name:"服装鞋帽"},
-	{ id:141, pId:14, name:"手机 "},
-	{ id:42, pId:14, name:"照相机 "},
+	{volist name="data" id="val"}
+	{ id:{$val.cgid}, pId:{$val.cid}, name:"{$val.cgname}"},
+	{/volist}
 ];
 		
 var code;
@@ -260,6 +262,8 @@ $(document).ready(function(){
 	//zTree.selectNode(zTree.getNodeByParam("id",'11'));
 });			
 </script>
+
+
 <script type="text/javascript">
 $(function(){
 	$('.skin-minimal input').iCheck({
@@ -275,10 +279,10 @@ $(function(){
 
 	var uploader = WebUploader.create({
 		auto: true,
-		swf: 'lib/webuploader/0.1.5/Uploader.swf',
+		swf: '__STATIC__/Widget/webuploader/0.1.5/Uploader.swf',
 	
 		// 文件接收服务端。
-		server: 'http://lib.h-ui.net/webuploader/0.1.5/server/fileupload.php',
+		server: "{:url('proaction/addpic')}",
 	
 		// 选择文件的按钮。可选。
 		// 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -337,6 +341,7 @@ $(function(){
 	// 文件上传失败，显示上传出错。
 	uploader.on( 'uploadError', function( file ) {
 		$( '#'+file.id ).addClass('upload-state-error').find(".state").text("上传出错");
+		
 	});
 	
 	// 完成上传完了，成功或者失败，先删除进度条。
@@ -519,10 +524,10 @@ $(function(){
             },
             dnd: '#dndArea',
             paste: '#uploader',
-            swf: 'lib/webuploader/0.1.5/Uploader.swf',
+            swf: '__STATIC__/Widget/webuploader/0.1.5/Uploader.swf',
             chunked: false,
             chunkSize: 512 * 1024,
-            server: 'http://lib.h-ui.net/webuploader/0.1.5/server/fileupload.php',
+            server: "{:url('proaction/addpic')}",
             // runtimeOrder: 'flash',
 
             // accept: {
@@ -945,3 +950,37 @@ $(function(){
 </script>
 </body>
 </html>
+<script type="text/javascript">
+	$('#article_save_submit').on('click',function () {
+		$.ajax({
+				type:'POST',
+				url:"{:url('proaction/addsp')}",
+				data:$("#form-article-add").serialize(),
+				dataType:"JSON",
+				success:function(data){
+					console.log(data);
+					/*switch (data) {
+						case '名称必须':
+							$('.bt').attr('placeholder','请输入标题');
+							$('.bt').addClass('us');
+							break;
+						case 'num不能为空':
+							$('.num').attr('placeholder','请输入数量');
+							$('.num').addClass('us');
+							break;
+						case 'money不能为空':
+							$('.jg').attr('placeholder','请输入价格');
+							$('.jg').addClass('us');
+							break;
+						case 'dmoney不能为空':
+							$('.yj').attr('placeholder','请输入原价');
+							$('.yj').addClass('us');
+							break;
+						case 1:
+							alert('添加成功');
+							break;
+					}*/
+				}
+		})
+	})
+</script>

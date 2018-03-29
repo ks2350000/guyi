@@ -1,33 +1,47 @@
 <?php
 namespace app\index\controller;
 
+use think\Db;
+use think\Controller;
 use app\index\common\Base;
 
-class Geren extends Base
+use app\index\model\Geren as GerenModel;
+
+class Geren extends Controller
 {
 	public function grxx()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function shdz()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function wdgz()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
     
     public function wdsc()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function xgmm()
     {
-       return $this->fetch();
+       $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
 }

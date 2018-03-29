@@ -1,32 +1,46 @@
 <?php
 namespace app\index\controller;
 
+use think\Db;
+use think\Controller;
 use app\index\common\Base;
 
-class Fund extends Base
+use app\index\model\Fund as FundModel;
+
+class Fund extends Controller
 {
 	public function zhye()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function zxcz()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function zxtx()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function jiesuan()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 
     public function fukuan()
     {
-       return $this->fetch();
+      $kk = new Base();
+      $kk -> zxc();
+      return $this->fetch();
     }
 }

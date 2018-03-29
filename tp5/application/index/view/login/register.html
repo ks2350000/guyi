@@ -1,11 +1,12 @@
 <!DOCTYPE html> 
 <html>
-	{include file="public/header"}
+	{include file="../application/index/view/public/index_tou.html" /}
 	<style type="text/css">
 		
 		.us::-webkit-input-placeholder{
 			color:red;
 		}
+		.change{background: #ccc;cursor: auto}  
 	</style>
 	<body class="sign-bg">
 		<div class="sign clearfix">
@@ -13,17 +14,17 @@
 				<a href="{:url('/index/index')}" class="fl fanhui">返回首页</a>
 				<p class="fr">
 					已有商城账号？
-					<a href="{:url('index')}" class="zhuce ra3">
+					<a href="{:url('sign')}" class="zhuce ra3">
 						登录
 					</a>
 				</p>
 			</div>
 			<div class="bottom clearfix box-s ra10">
 				<div class="sign-logo clearfix">
-					<img src="__STATIC__/img/yuanlogo.png"/>
+					<img src="__PUBLIC_INDEX__/img/yuanlogo.png"/>
 				</div>
 				<div class="content clearfix">
-					<form action="{:url('login')}" method="post" id="form_tj">
+					<form action="{:url('index/index')}" method="post" id="form_tj">
 						<ul>
 							<li>
 								<span class="fl"></span>
@@ -55,17 +56,24 @@
 							<li class="jizhu">
 								<div class="radiothree fl"> 
 								    <label>
-								        <input type="checkbox" name="check" value="">
+								        <input type="checkbox" id="yonghxx" name="check" value="1">
 								        <div class="option"></div>
-								        <p class="opt-text fl ml20">我已阅读并同意<a href="zcxy.html">《椿龄艺术用户注册协议》</a></p>
+								        <p class="opt-text fl ml20">我已阅读并同意<a href="__PUBLICA__/help/zcxy.html">《椿龄艺术用户注册协议》</a></p>
 								    </label>
 								</div>
 							</li>
 						</ul>
-						<button type="button" id="submit" class="sign-btn zhuce-btn ra5">立即注册</button>
+						<input type="button" id="submit" value="立即注册" class="sign-btn zhuce-btn ra5"> 
+						<!-- <button type="button" id="submit" class="sign-btn zhuce-btn ra5">立即注册</button> -->
 					</form>	
 				</div>	
-					
+					<div>
+					<ul class="cxzasd" style="margin-top: 8px;overflow: hidden;">
+						<span style="float: left;">其他登录:</span>
+						<li style="float: left;  margin-left:10px;"><a class="wbdj"><img src="__PUBLIC_INDEX__/img/weibo01.png" width="30px" /></a></li>
+						<li style="float: left; margin-left:10px;"><a class="qqdj"><img src="__PUBLIC_INDEX__/img/qq01.png" width="30px" /></a></li>
+					</ul>
+				</div>		
 			</div>
 			<div class="xia clearfix">
 				<p>Copyright © 2003-2015 椿龄文化(chunlingwenhua). All Rights Reserved.</p>
@@ -75,14 +83,29 @@
 </html>
 <script type="text/javascript">
 
-		$('#submit').on('click', function(){
+	$(document).ready(function(){
+		$('input.ra5').addClass('change');  
+        $('input.ra5').attr('disabled','disabled');  
+        $('#yonghxx').click(function(){  
+            if($("input[type='checkbox']").is(':checked')){  
+                $('input.ra5').removeClass('change');  
+                $('input.ra5').removeAttr('disabled','disabled');  
+            }else{  
+                $('input.ra5').addClass('change');  
+                $('input.ra5').attr('disabled','disabled');  
+            }  
+        });  
+	});  
+		
+
+	$('#submit').on('click', function(){
 			$.ajax({
 				type:'POST',
 				url:"{:url('login')}",
 				data:$("#form_tj").serialize(),
 				dataType:"JSON",
 				success:function(data){
-					console.log(data);
+					//console.log(data);
 					switch (data) {
 						case'名称必须':
 							$('#user').attr('placeholder','请输入用户名');
@@ -113,11 +136,7 @@
 							$('#code').attr('placeholder','请输入验证码');
 							$('#code').addClass('us');
 							break;
-						case'验证码错误':
-							$('#code').attr('value','');
-							$('#code').attr('placeholder','验证码错误');
-							$('#code').addClass('us');
-							break;
+					
 						case'验证码错误':
 							$('#code').attr('value','');
 							$('#code').attr('placeholder','验证码错误');
@@ -153,13 +172,24 @@
 							$('#phonenum').attr('placeholder','手机验证码错误');
 							$('#phonenum').addClass('us');
 							break;
+						case '5':
+							$('#phonenum').attr('value','');
+							$('#phonenum').attr('placeholder','到这里没问题');
+							$('#phonenum').addClass('us');
+							break;
 						default:
-							window.location.href = "{:url('index')}";
+							window.location.href = "{:url('index/index')}";
 							break;
 					}
 				}
 			})
+
 		})
+
+
+
+
+
 
 		$('.xs').mousedown(function() {
 			$('.xs').removeClass('us');
@@ -174,7 +204,7 @@
                 type:"POST",
                 data:{"phonenum":oPhone},
                 dataType:"JSON",
-                success:function(data) {	
+                success:function(data) {
                 	/*console.log(data);
                 	if (data==null){
 						//alert('名');
@@ -202,6 +232,21 @@
 			},1000);
 	    })
 	    
-		
+
+	    
+	//第三方登录
+	$(function(){
+     $(".wbdj").click(function(){
+            window.location.href = "{:url('index/oauthhui/weibo')}"; 
+           
+        });
+
+     $(".qqdj").click(function(){
+            window.location.href = "{:url('index/oauthhui/qq')}"; 
+           
+        });
+  });
+	
+
 
 </script>

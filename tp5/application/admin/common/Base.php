@@ -1,27 +1,78 @@
 <?php
 namespace app\admin\common;
 use think\Controller;
+use think\Config;
+use think\Session;
+use think\Db;
+
+
 class Base extends Controller
 {
-	/**
-	 * 获取子孙树
-	 * @param   array        $data   待分类的数据
-	 * @param   int/string   $id     要找的子节点id
-	 * @param   int          $lev    节点等级
-	 */
-	 public function getSubTree($data , $id = 0 , $lev = 0) {
-	 	
-	    static $son = array();
-	    foreach($data as $key => $value) {
-	        if($value['parent_id'] == $id) {
-	            $value['lev'] = $lev;
-	            $son[] = $value;
-	            getSubTree($data , $value['id'] , $lev+1);
-	        }
-	    }
+	protected function getSubs($categorys,$catId=0,$level=1)
+	{ 
 
-	    return $son;
-	 }
+		$subs=array(); 
+		foreach($categorys as $item){ 
 
+			if($item['cid']==$catId){ 
+				$item['level'] = str_repeat('-',$level);
+				$subs[]=$item; 
+				$subs=array_merge($subs,$this->getSubs($categorys,$item['cgid'],$level+1)); 
+
+			} 
+
+		} 
+		return $subs; 
+	} 
+
+	protected function getParents($categorys,$catId){ 
+		$tree=array(); 
+			foreach($categorys as $item){ 
+				if($item['cid']==$catId){ 
+					if($item['id']>0) 
+					$tree=array_merge($tree,$this->getParents($categorys,$item['id'])); 
+					$tree[]=$item;  
+					break;  
+			} 
+		} 
+			return $tree; 
+	} 
+
+	public function rbac()
+	{
+		$openid = Session::get('openid');
+		$idstr = Session::get('idstr');
+		$name = Session::get('username');
+		//dump(Session::get());
+		if (empty($name)) {
+			$this->redirect('/');
+		}
+		$result = Db::name('user')
+			 ->where('qqopenid',$openid)
+			 ->whereOr('wbopenid',$idstr)
+			 ->whereOr('name',$name)
+			 ->select();
+			 $username = $result[0]['name'];
+			 $password = $result[0]['password'];
+			 $uid = $result[0]['id'];
+		session('username',$username);
+		session('uid',$uid);
+
+			 if (empty($result)) {
+			 	$access_id = 4;
+			 } else {
+			 	$id = $result[0]['id'];
+			 	$resulta = Db::name('role_access')
+					 ->where('role_id',$id)
+					 ->select();
+
+					/* dump($_SESSION);
+					 die;*/
+				$access_id = $resulta[0]['access_id'];
+			 }
 		
+		if ($access_id!=3) {
+			$this->redirect('/');
+		}
+	}
 }

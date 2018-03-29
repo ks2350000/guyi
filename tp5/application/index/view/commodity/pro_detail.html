@@ -47,7 +47,7 @@
 								</p>
 							</div>
 							<div class="but-box mt30">
-								<input type="button" class="fl orange-but radius3" onclick="window.location.href='__PUBLICA__/fund/jiesuan.html'" value="立即购买">
+								<input type="button" class="fl orange-but radius3" onclick="mai()" value="立即购买">
 								<input type="button" class="fl ml20 orange-but gray-but radius3" value="加入购物车">
 							</div>
 						</div>
@@ -143,3 +143,28 @@
 		</div>
 		<!--/end-->
 		{include file="../application/index/view/public/footer.html" /}
+		<script type="text/javascript">
+			function mai()
+			{
+				$.ajax({
+				type:'POST',
+				url:"{:url('mai')}",
+				data:"",
+				success:function(data){
+					console.log(data);
+					switch (data) {
+						case 3:
+							alert('请先登录');
+							break;
+						case 4:
+							alert('商家无购物权限,请使用普通账户');
+							break;
+						default:
+							window.location.href='__PUBLICA__/fund/jiesuan.html';
+						break;
+					}
+				}
+			})
+				
+			}
+		</script>

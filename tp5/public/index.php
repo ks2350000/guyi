@@ -13,7 +13,14 @@
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
-define('EXTEND_PATH', __DIR__ .'/../extend/');
+
+
+define('SITE_URL','http://www.hellowk.cn');
+
+define('EXTEND_PATH', __DIR__ . '/../extend/');
+//define('VENDOR_PATH', __DIR__ . '/../vendor/');
 
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
+
+//echo $_SERVER['HTTP_HOST'];

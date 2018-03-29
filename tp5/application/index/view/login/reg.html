@@ -1,0 +1,229 @@
+<!DOCTYPE html> 
+<html>
+	{include file="../application/index/view/public/index_tou.html" /}
+	<style type="text/css">
+		
+		.us::-webkit-input-placeholder{
+			color:red;
+		}
+		.change{background: #ccc;cursor: auto}  
+	</style>
+	<body class="sign-bg">
+		<div class="sign clearfix">
+			<div class="top clearfix">
+				<a href="{:url('/index/index')}" class="fl fanhui">返回首页</a>
+				<p class="fr">
+					已有商城账号？
+					<a href="{:url('sign')}" class="zhuce ra3">
+						登录
+					</a>
+				</p>
+			</div>
+			<div class="bottom clearfix box-s ra10">
+				<div class="sign-logo clearfix">
+					<img src="__PUBLIC_INDEX__/img/yuanlogo.png"/>
+				</div>
+				<div class="content clearfix">
+					<form action="{:url('index/index')}" method="post" id="form_tj">
+						<ul>
+							<li>
+								<span class="fl"></span>
+								<input id="user"  type="text" name="username"  value="" placeholder="用户名" class="fl shuru xs u" />
+								
+							</li>
+							<li>
+								<span class="fl"></span>
+								<input id="phone" type="text" name="phone"  value="" placeholder="手机号" class="fl shuru xs u" />
+							</li>
+							<li class="yanzhengma">
+								<span class="fl hudun"></span>
+								<input id="code" type="text" name="code"  value="" placeholder="请输入验证码" class="fl shuru yzma xs u" />
+								<samp class="fr"><img src="{:captcha_src()}" alt="captcha" onclick="this.src=this.src" /></samp>
+							</li>
+							<li class="yanzhengma">
+								<span class="fl hudun"></span>
+								<input id="phonenum"  type="text" name="phonenum"  value="" placeholder="请输入验证码" class="fl shuru yzma xs u" />
+								<samp id="sunbtn" class="fr">获取验证码</samp>
+							</li>
+							<li>
+								<span class="fl mima"></span>
+								<input id="password" type="password" name="password"  value="" placeholder="密码" class="fl shuru xs u" />
+							</li>
+							<li>
+								<span class="fl mima"></span>
+								<input id="password1" type="password" name="password1"  value="" placeholder="请再次输入密码" class="fl shuru xs u" />
+							</li>
+							<li class="jizhu">
+								<div class="radiothree fl"> 
+								    <label>
+								        <input type="checkbox" id="yonghxx" name="check" value="1">
+								        <div class="option"></div>
+								        <p class="opt-text fl ml20">我已阅读并同意<a href="__PUBLICA__/help/zcxy.html">《椿龄艺术用户注册协议》</a></p>
+								    </label>
+								</div>
+							</li>
+						</ul>
+						<input type="button" id="submit" value="立即注册" class="sign-btn zhuce-btn ra5"> 
+						<!-- <button type="button" id="submit" class="sign-btn zhuce-btn ra5">立即注册</button> -->
+					</form>	
+				</div>	
+					
+			</div>
+			<div class="xia clearfix">
+				<p>Copyright © 2003-2015 椿龄文化(chunlingwenhua). All Rights Reserved.</p>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('input.ra5').addClass('change');  
+        $('input.ra5').attr('disabled','disabled');  
+        $('#yonghxx').click(function(){  
+            if($("input[type='checkbox']").is(':checked')){  
+                $('input.ra5').removeClass('change');  
+                $('input.ra5').removeAttr('disabled','disabled');  
+            }else{  
+                $('input.ra5').addClass('change');  
+                $('input.ra5').attr('disabled','disabled');  
+            }  
+        });  
+	});  
+		
+
+	$('#submit').on('click', function(){
+			$.ajax({
+				type:'POST',
+				url:"{:url('login')}",
+				data:$("#form_tj").serialize(),
+				dataType:"JSON",
+				success:function(data){
+					console.log(data);
+					switch (data) {
+						case'名称必须':
+							$('#user').attr('placeholder','请输入用户名');
+							$('#user').addClass('us');
+							break;
+						case'2':
+							$('#user').attr('value','');
+							$('#user').attr('placeholder','该用户名已被暂用');
+							$('#user').addClass('us');
+							break;
+						case'名称最多不能超过25个字符':
+							$('#user').attr('value','');
+							$('#user').attr('placeholder','用户名格式不正确');
+							$('#user').addClass('us');
+							break;
+						case'手机号不能为空':
+							$('#phone').attr('value','');
+							$('#phone').attr('placeholder','手机号不能为空');
+							$('#phone').addClass('us');
+							break;
+						case'手机号格式不正确':
+							$('#phone').attr('value','');
+							$('#phone').attr('placeholder','手机号格式不正确');
+							$('#phone').addClass('us');
+							break;
+						case'请输入验证码':
+							$('#code').attr('value','');
+							$('#code').attr('placeholder','请输入验证码');
+							$('#code').addClass('us');
+							break;
+					
+						case'验证码错误':
+							$('#code').attr('value','');
+							$('#code').attr('placeholder','验证码错误');
+							$('#code').addClass('us');
+							break;
+						case'请输手机验证码':
+							$('#phonenum').attr('value','');
+							$('#phonenum').attr('placeholder','请输手机验证码');
+							$('#phonenum').addClass('us');
+							break;
+						case'密码格式不正确,请填写数字，字母，下划线':
+							$('#password').attr('value','');
+							$('#password').attr('placeholder','密码格式不正确,请填写数字，字母，下划线');
+							$('#password').addClass('us');
+							break;
+						case'密码长度在6~16位之间':
+							$('#password').attr('value','');
+							$('#password').attr('placeholder','密码长度在6~16位之间');
+							$('#password').addClass('us');
+							break;
+						case'请再次输入密码':
+							$('#password1').attr('value','');
+							$('#password1').attr('placeholder','请再次输入密码');
+							$('#password1').addClass('us');
+							break;
+						case'两次密码不一致':
+							$('#password1').attr('value','');
+							$('#password1').attr('placeholder','两次密码不一致');
+							$('#password1').addClass('us');
+							break;
+						case '1':
+							$('#phonenum').attr('value','');
+							$('#phonenum').attr('placeholder','手机验证码错误');
+							$('#phonenum').addClass('us');
+							break;
+						case '5':
+							$('#phonenum').attr('value','');
+							$('#phonenum').attr('placeholder','到这里没问题');
+							$('#phonenum').addClass('us');
+							break;
+						default:
+							window.location.href = "{:url('index/index')}";
+							break;
+					}
+				}
+			})
+
+		})
+
+
+
+
+
+
+		$('.xs').mousedown(function() {
+			$('.xs').removeClass('us');
+		})
+		
+		var sess = 0;
+		$("#sunbtn").click(function(){
+			
+            var oPhone = $("#phone").val();
+            $.ajax({
+                url:"{:url('dx')}",
+                type:"POST",
+                data:{"phonenum":oPhone},
+                dataType:"JSON",
+                success:function(data) {
+                	/*console.log(data);
+                	if (data==null){
+						//alert('名');
+						$('#phone').attr('placeholder','手机号不能为空');
+						$('#phone').addClass('us');
+
+					}*/
+                }
+            })
+            if (sess == 1) {
+            	return;
+            }
+            sess = 1;
+            var time = 3;
+			var timer = setInterval(function () {
+				if (time <= 0 ) {
+					$("#sunbtn").html('重新发送');
+					clearInterval(timer);
+					sess = 0;
+					
+				}else {
+					$("#sunbtn").html(time+'秒后重新发送');
+				}
+				time--;
+			},1000);
+	    })
+
+</script>

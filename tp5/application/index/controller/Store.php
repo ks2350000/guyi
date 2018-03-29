@@ -2,18 +2,23 @@
 namespace app\index\controller;
 
 use think\Db;
-use app\index\common\Base;
+use think\Controller;
 use app\index\model\Store as StoreModel;
+use app\index\common\Base;
 
-class Store extends Base
+class Store extends Controller
 {
 	public function mall()
     {
-       return $this->fetch();
+      $kk = new Base();
+    	$kk -> zxc();
+    	return $this->fetch();
     }
 
     public function shopping()
     {
-       return $this->fetch();
+      $kk = new Base();
+    	$kk -> zxc();
+    	return $this->fetch();
     }
 }
