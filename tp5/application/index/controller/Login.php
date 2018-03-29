@@ -52,11 +52,13 @@ class Login extends Base
           
         }
         if (($data_name->password != md5($password))) {
+            
             return 3;
         }
         if ($data_name->is_admin == 1) {
             return 5;
         }
+        session('admin',$data_name->is_admin);
         session('username',$username, 'think');
         session('uid',$data_name->id);
         /*$data_user = $user->selrbac($username);
@@ -75,6 +77,7 @@ class Login extends Base
        
     }
     
+    //注册
     public function login()
     {
         $username = input('post.username');

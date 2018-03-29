@@ -33,7 +33,7 @@ class Proaction extends Base
 		//session('uid',2);
 		$data = [
 			'cid'		=>	input('post.cate'),
-			'uid'		=>	session('uid'),
+			'uid'		=>	session('ucid'),
 			'name'		=>	input('post.goodsname'),
 			'money'		=>	input('post.dis_pirce'),
 			'dmoney'	=>	input('post.pirce'),

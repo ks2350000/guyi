@@ -5,11 +5,11 @@ class Base extends Controller
 {
 	public function construct() 
 	{
-		if (empty(session('username'))) {
+		if (empty(session('name'))) {
 			$this->error('请登录','login/index');
 		} else {
 			$user = model('User');
-			$data = $user->where('name',session('username'))->select()->toArray();
+			$data = $user->where('name',session('name'))->select()->toArray();
 			if ($data[0]['is_admin'] == 0) {
 				$this->error('您不是商户','/index/index');
 			}

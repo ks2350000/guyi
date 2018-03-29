@@ -10,6 +10,9 @@ class Chuli extends Controller
 	{
 
 		Session::delete('username');
+		Session::delete('uid');
+		Session::delete('admin');
+		Session::delete('count');
 		Session::delete('password');
 		Session::delete('openid');
 		Session::delete('idstr');

@@ -17,7 +17,7 @@
 		<div class="banner">		
 			<div class="bd">
 				<ul>
-					<li style="background:url(__PUBLIC_INDEX__/img/banner.jpg) #194982 center 0 no-repeat;"><a target="_blank" href="#"></a></li>
+					<li style="background:url(__STATIC__/img/banner.jpg) #194982 center 0 no-repeat;"><a target="_blank" href="#"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -41,284 +41,44 @@
 				</div>
 			</div>
 			<div class="content clearfix box-s">
+				{volist name="speData->data" id="sval"}
 				<div class="list clearfix fl box-s transition">
 					<div class="tu clearfix fl">
-						<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
+						<img src="{$sval.pic}"/>
 						<span></span>
 					</div>
 					<div class="right clearfix fr box-s">
 						<div class="bt clearfix">
-							方框梅兰竹菊系列专场
+							{$sval.name}
 						</div>
 						<div class="ctent clearfix mt20 over3">
-							方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框
-							梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰
-							竹菊系列专场......
+							{$sval.content}
 						</div>
 						<div class="zuopin clearfix">
 							<ul>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-4.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/14.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-2.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-										<span></span>
-									</a>
-								</li>
+								{volist name="comData" id="cval"}
+									{if condition="$cval.speid eq $sval.id"}
+									<li>
+										<a href="{:url('commodity/pro_detail',['cid'=>$cval.comid])}">
+											<img src="{$cval.pic_name}"/>
+											<span></span>
+										</a>
+									</li>
+									{/if}
+								{/volist}
 							</ul>
 						</div>
-						<a href="special_detail.html" class="jinru ra3 transition">
+						<a href="{:url('zhuan/special_detail',['spid'=>$sval.id])}" class="jinru ra3 transition">
 							进入专场>
 						</a>
 					</div>
+					{/volist}
 				</div>
-				<div class="list clearfix fl box-s transition">
-					<div class="tu clearfix fl">
-						<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-						<span></span>
-					</div>
-					<div class="right clearfix fr box-s">
-						<div class="bt clearfix">
-							方框梅兰竹菊系列专场
-						</div>
-						<div class="ctent clearfix mt20 over3">
-							方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框
-							梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰
-							竹菊系列专场......
-						</div>
-						<div class="zuopin clearfix">
-							<ul>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-4.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/14.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-2.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-										<span></span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<a href="special_detail.html" class="jinru ra3 transition">
-							进入专场>
-						</a>
-					</div>
-				</div>
-				<div class="list clearfix fl box-s transition">
-					<div class="tu clearfix fl">
-						<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-						<span></span>
-					</div>
-					<div class="right clearfix fr box-s">
-						<div class="bt clearfix">
-							方框梅兰竹菊系列专场
-						</div>
-						<div class="ctent clearfix mt20 over3">
-							方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框
-							梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰
-							竹菊系列专场......
-						</div>
-						<div class="zuopin clearfix">
-							<ul>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-4.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/14.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-2.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-										<span></span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<a href="special_detail.html" class="jinru ra3 transition">
-							进入专场>
-						</a>
-					</div>
-				</div>
-				<div class="list clearfix fl box-s transition">
-					<div class="tu clearfix fl">
-						<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-						<span></span>
-					</div>
-					<div class="right clearfix fr box-s">
-						<div class="bt clearfix">
-							方框梅兰竹菊系列专场
-						</div>
-						<div class="ctent clearfix mt20 over3">
-							方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框
-							梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰
-							竹菊系列专场......
-						</div>
-						<div class="zuopin clearfix">
-							<ul>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-4.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/14.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-2.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-										<span></span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<a href="special_detail.html" class="jinru ra3 transition">
-							进入专场>
-						</a>
-					</div>
-				</div>
-				<div class="list clearfix fl box-s transition">
-					<div class="tu clearfix fl">
-						<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-						<span></span>
-					</div>
-					<div class="right clearfix fr box-s">
-						<div class="bt clearfix">
-							方框梅兰竹菊系列专场
-						</div>
-						<div class="ctent clearfix mt20 over3">
-							方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框
-							梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰竹菊系列专场方框梅兰
-							竹菊系列专场......
-						</div>
-						<div class="zuopin clearfix">
-							<ul>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-4.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/14.jpg"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/1-2.png"/>
-										<span></span>
-									</a>
-								</li>
-								<li>
-									<a href="__PUBLICA__/zhuan/pro_detail.html">
-										<img src="__PUBLIC_INDEX__/upload/4.jpg"/>
-										<span></span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<a href="special_detail.html" class="jinru ra3 transition">
-							进入专场>
-						</a>
-					</div>
-				</div>				
+							
 			</div>
 			<div class="pages clearfix">
 				<div class="page clearfix ta-right fl">
-					<a href="#" class="pre box-s">上一页</a>
-					<a href="#">1</a>
-					<a href="#">2</a>
-					<a href="#">3</a>
-					<span>...</span>
-					<a href="#" class="next box-s">下一页</a>
-					<span class="ml10">到第</span>
-					<input type="" name="" id="" value="">
-					<span>页</span>
-					<input type="submit" name="" id="" value="确定">
+					<div>{$speData->render}</div>
 				</div>
 			</div>
 		</div>

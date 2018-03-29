@@ -1,5 +1,15 @@
 {include file="../application/index/view/public/grxx_tou.html" /}
 
+<style type="text/css">
+	.mm {
+		width:270px;
+		height:35px;
+		padding:3px 5px;
+	}
+	.us::-webkit-input-placeholder{
+			color:red;
+		}
+</style>
 		<!--Main-wrap-->
 		<div class="main-wrap graybg">
 			<div class="wrapper pt40 pb40 clearfix">
@@ -20,9 +30,7 @@
 						<li>
 							<a href="{:url('geren/wdsc')}" class="db fs16">我的收藏</a>
 						</li>
-						<li>
-							<a href="{:url('geren/wdgz')}" class="db fs16">我的关注</a>
-						</li>
+						
 						<li class="on">
 							<a href="{:url('geren/xgmm')}" class="db fs16">修改密码</a>
 						</li>
@@ -48,14 +56,17 @@
 						<h3 class="fl fs26">修改密码</h3>
 					</div>
 					<div class="passbox">
-						<form action="">
-							<p class="clearfix mb20"><label class="fl fs14">原密码：</label><input type="text" class="fl ml10" placeholder="" value=""></p>
-							<p class="clearfix mb20"><label class="fl fs14">新密码：</label><input type="text" class="fl ml10" placeholder="密码由6-16位字符组成，区分大小写" value=""></p>
-							<p class="clearfix mb20"><label class="fl fs14">重复新密码：</label><input type="text" class="fl ml10" placeholder="" value=""></p>
+						<form action="" method="post" id="form_pass">
+							<p class="clearfix mb20"><label class="fl fs14">原密码：</label>
+								<input type="password" name="password" class="fl pd ph mm ml10" placeholder="" value=""></p>
+							<p class="clearfix mb20"><label class="fl fs14">新密码：</label>
+								<input type="password" name="password1" class="fl pd pc pa mm ml10" placeholder="密码由6-16位字符组成，区分大小写" value=""></p>
+							<p class="clearfix mb20"><label class="fl fs14">重复新密码：</label>
+								<input type="password" name="password2" class="fl pd pc pb mm ml10" placeholder="" value=""></p>
 							<p class="clearfix">
 								<label class="fl"></label>
-								<input type="button" class="fl ml10 orange-but fs16 radius3" value="确认">
-								<input type="button" class="fl ml10 fs16 radius3 reset-but" value="取消">
+								<input type="button" id="input01" class="fl ml10 orange-but fs16 radius3" value="确认">
+								<input type="button" id="input02" class="fl ml10 fs16 radius3 reset-but" value="取消">
 							</p>
 						</form>
 
@@ -66,3 +77,59 @@
 		</div>
 		<!--/end-->
 {include file="../application/index/view/public/footer.html" /}
+<script type="text/javascript">
+	
+	$('#input01').on('click', function(){
+			$.ajax({
+				type:'POST',
+				url:"{:url('user/pass')}",
+				data:$("#form_pass").serialize(),
+				dataType:"JSON",
+				success:function(data){
+					console.log(data);
+					switch (data) {
+						case 1:
+							$('.ph').val('');
+							$('.ph').attr('placeholder','请输入原密码');
+							$('.ph').addClass('us');
+							break;
+						case 2:
+							$('.pa').val('');
+							$('.pa').attr('placeholder','请输入新密码');
+							$('.pa').addClass('us');
+							break;
+						case 3:
+							$('.pb').val('');
+							$('.pb').attr('placeholder','请再次输入新密码');
+							$('.pb').addClass('us');
+							break;
+						case 4:
+							$('.ph').val('');
+							$('.ph').attr('placeholder','原密码错误');
+							$('.ph').addClass('us');
+							break;
+						case 5:
+							$('.pc').val('');
+							$('.pc').attr('placeholder','两次密码不匹配');
+							$('.pc').addClass('us');
+							break;
+						case 7:
+							$('.pc').val('');
+							$('.pc').attr('placeholder','请修改密码');
+							$('.pc').addClass('us');
+							break;
+						case 6:
+							alert('修改成功');
+							$('.pd').val('');
+							$('.pd').attr('placeholder','');
+							break;
+					}
+				}
+			})
+
+		})
+	$('#input02').on('click', function(){
+		$('.pd').val('');
+		$('.pd').attr('placeholder','');
+	})
+</script>

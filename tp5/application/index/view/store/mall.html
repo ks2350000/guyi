@@ -37,26 +37,19 @@
 							</p>
 							<div class="right clearfix fl">
 								<ul>
-									<li class="cur">不限</li>
+									<li id="bx" class="cur"><a href = "{:url('store/mall',['cgid'=> 0])}">不限</a></li>
 									{volist name="cdata" id="value"}
-										<li class=""><a href="#">{$value.cgname}</a></li>
+	
+									<li class="">
+										<a href="javascript:;" value="$value." id="dianji">
+										{$value.cgname}</a>
+									</li>
+										
 									{/volist}
 								</ul>
 							</div>
 						</div>
-						<div class="list clearfix fl">
-							<p class="bt fl">
-								尺寸：
-							</p>
-							<div class="right clearfix fl">
-								<ul>
-									<li class="cur">不限</li>
-									<li>小于50cm</li>
-									<li>500-100cm</li>
-									<li>大于150cm</li>
-								</ul>
-							</div>
-						</div>
+					
 						<div class="list clearfix fl">
 							<p class="bt fl">
 								价格：
@@ -64,11 +57,11 @@
 							<div class="right clearfix fl">
 								<ul>
 									<li class="cur">不限</li>
-									<li>0-1000元</li>
+									<li><a href="{:url('store/mall',['jgid'=>60000])}">0-1000元</a></li>
 									<li>1000-2000元</li>
 									<li>2000-3000元</li>
 									<li>3000-5000元</li>
-									<li>5000元以上</li>
+									<li>500000元以上</li>
 								</ul>
 							</div>
 						</div>						
@@ -84,54 +77,146 @@
 						<div class="left clearfix fl">
 							<!--以下li中添加cur的时候是选中的时候-->
 							<ul>
-								<li>综合排序</li>
-								<li class="xliang cur">销量</li>
-								<li class="xpin">新品</li>
+								<li id="zh" class="cur">综合排序</li>
+								<li id="xl" class="xliang">销量</li>
+								<li id="xp" class="xpin">新品</li>
 							</ul>
 						</div>
 					</div>
-					<div id="" class="bottom clearfix">
-						{volist name="data->data" id="vol"}
-						
-							<div class="list clearfix transition">
-								<div class="tu clearfix">
-									<img src="{$vol.pic_name}"/>
-									<span></span>
-									
-									<div class="ycang clearfix">
-										<samp class="opa8"></samp>
-										<div class="nr clearfix">
-											<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
-											
-											<ul>
-											<li class="box-s transition" >
-												<a value="{$vol.comid}"  class="input1" href="javascript:void(0)"  >收藏</a>
-											</li>
-											<li  class="box-s transition">
-												<a value="{$vol.comid}" class="input2" href="javascript:void(0)">
-												购物车
-												</a>
-											</li>
-											</ul>
-										</div>								
+
+					<div id="th" style="display: block;">
+						<div id="" class="bottom clearfix">
+							{volist name="data->data" id="vol"}
+							
+								<div class="list clearfix transition">
+									<div class="tu clearfix">
+										<img src="{$vol.pic_name}"/>
+										<span></span>
+										
+										<div class="ycang clearfix">
+											<samp class="opa8"></samp>
+											<div class="nr clearfix">
+												<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
+												
+												<ul>
+												<li class="box-s transition" >
+													<a value="{$vol.comid}"  class="input1" href="javascript:void(0)"  >收藏</a>
+												</li>
+												<li  class="box-s transition">
+													<a value="{$vol.comid}" class="input2" href="javascript:void(0)">
+													购物车
+													</a>
+												</li>
+												</ul>
+											</div>								
+										</div>
+									</div>
+									<div class="xia clearfix box-s">
+										<p class="bt over">
+											{$vol.cname}
+										</p>
+										<div class="price clearfix">
+											<span class="fl">￥{$vol.money}.00<samp>原价￥{$vol.dmoney}.00</samp></span>
+											<a href="{:url('commodity/pro_detail',['cid'=>$vol.comid])}" class="goumai fr ra3 transition">立即购买</a>
+										</div>
 									</div>
 								</div>
-								<div class="xia clearfix box-s">
-									<p class="bt over">
-										{$vol.cname}
-									</p>
-									<div class="price clearfix">
-										<span class="fl">￥{$vol.money}.00<samp>原价￥{$vol.dmoney}.00</samp></span>
-										<a href="{:url('commodity/pro_detail',['cid'=>$vol.comid])}" class="goumai fr ra3 transition">立即购买</a>
+							
+							{/volist}
+						</div>
+						<div class="page clearfix ta-right">
+							<div>{$data->render}</div>
+						</div>
+					</div>
+					<div id="xiao" style="display: none;">
+						<div id="" class="bottom clearfix">
+							{volist name="xiao->data" id="vol"}
+							
+								<div class="list clearfix transition">
+									<div class="tu clearfix">
+										<img src="{$vol.pic_name}"/>
+										<span></span>
+										
+										<div class="ycang clearfix">
+											<samp class="opa8"></samp>
+											<div class="nr clearfix">
+												<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
+												
+												<ul>
+												<li class="box-s transition" >
+													<a value="{$vol.comid}"  class="input1" href="javascript:void(0)"  >收藏</a>
+												</li>
+												<li  class="box-s transition">
+													<a value="{$vol.comid}" class="input2" href="javascript:void(0)">
+													购物车
+													</a>
+												</li>
+												</ul>
+											</div>								
+										</div>
+									</div>
+									<div class="xia clearfix box-s">
+										<p class="bt over">
+											{$vol.cname}
+										</p>
+										<div class="price clearfix">
+											<span class="fl">￥{$vol.money}.00<samp>原价￥{$vol.dmoney}.00</samp></span>
+											<a href="{:url('commodity/pro_detail',['cid'=>$vol.comid])}" class="goumai fr ra3 transition">立即购买</a>
+										</div>
 									</div>
 								</div>
-							</div>
-						
-						{/volist}
+							
+							{/volist}
+						</div>
+						<div class="page clearfix ta-right">
+							<div>{$data->render}</div>
+						</div>
 					</div>
-					<div class="page clearfix ta-right">
-						<div>{$data->render}</div>
+					<div id="xin" style="display: none;">
+						<div id="" class="bottom clearfix">
+							{volist name="xin->data" id="vol"}
+							
+								<div class="list clearfix transition">
+									<div class="tu clearfix">
+										<img src="{$vol.pic_name}"/>
+										<span></span>
+										
+										<div class="ycang clearfix">
+											<samp class="opa8"></samp>
+											<div class="nr clearfix">
+												<!--注意：当下方li中添加class名为cur的时候为选中的时候样式-->
+												
+												<ul>
+												<li class="box-s transition" >
+													<a value="{$vol.comid}"  class="input1" href="javascript:void(0)"  >收藏</a>
+												</li>
+												<li  class="box-s transition">
+													<a value="{$vol.comid}" class="input2" href="javascript:void(0)">
+													购物车
+													</a>
+												</li>
+												</ul>
+											</div>								
+										</div>
+									</div>
+									<div class="xia clearfix box-s">
+										<p class="bt over">
+											{$vol.cname}
+										</p>
+										<div class="price clearfix">
+											<span class="fl">￥{$vol.money}.00<samp>原价￥{$vol.dmoney}.00</samp></span>
+											<a href="{:url('commodity/pro_detail',['cid'=>$vol.comid])}" class="goumai fr ra3 transition">立即购买</a>
+										</div>
+									</div>
+								</div>
+							
+							{/volist}
+						</div>
+						<div class="page clearfix ta-right">
+							<div>{$data->render}</div>
+						</div>
 					</div>
+
 				</div>
 			</div>
 			<!--sales end-->
@@ -167,6 +252,64 @@
 			})
 		})
 	})  
+
+	$('.input2').each(function () {
+		$(this).on('click',function () {
+			var cid = $(this).attr('value');
+			var is = this;
+			$.ajax({
+					type:'POST',
+					url:"{:url('action/shopping')}",
+					data:{'id':cid},
+					dataType:"JSON",
+					success:function(data){
+						console.log(data);
+						switch (data) {
+							case 1:
+								jQuery.alertWindow("加入购物车成功");
+								break;
+							case 3:
+								jQuery.alertWindow("请登录");
+								break;
+							
+						}
+						
+					}
+			})
+		})
+	}) 
+
+	$('#zh').click(function () {
+		$('#xl').removeClass('cur');
+		$('#xp').removeClass('cur');
+		$('#zh').addClass('cur');
+
+		$('#xin').css('display','none');
+		$('#xiao').css('display','none');
+		$('#th').css('display','block');		
+	});
+
+	$('#xl').click(function () {
+		$('#zh').removeClass('cur');
+		$('#xp').removeClass('cur');
+		$('#xl').addClass('cur');
+
+
+		$('#xin').css('display','none');
+		$('#xiao').css('display','block');
+		$('#th').css('display','none');
+	});
+
+	$('#xp').click(function () {
+		$('#xl').removeClass('cur');
+		$('#zh').removeClass('cur');
+		$('#xp').addClass('cur');
+
+		$('#xin').css('display','block');
+		$('#xiao').css('display','none');
+		$('#th').css('display','none');
+	});
+
 </script>
 
 <script type="text/javascript">
@@ -183,4 +326,33 @@
         else {$(".alertWindowContent").text(e),$(".alertWindow1").show(),setTimeout(function(){$(".alertWindow1").hide()},1000);}  
         }  
         })  
-		</script>
+</script>
+<script type="text/javascript">
+		$('#dianji').each(function () {
+		$(this).on('click',function () {
+			var cid = $(this).attr('value');
+			var is = this;
+			$.ajax({
+					type:'POST',
+					url:"{:url('action/storeUp')}",
+					data:{'id':cid},
+					dataType:"JSON",
+					success:function(data){
+						//console.log(data);
+						switch (data) {
+							case 1:
+								jQuery.alertWindow("收藏成功");
+								break;
+							case 2:
+								jQuery.alertWindow("已收藏");
+								break;
+							case 3:
+								jQuery.alertWindow("请登录");
+								break;
+						}
+						
+					}
+			})
+		})
+	})
+</script>

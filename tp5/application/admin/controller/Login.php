@@ -38,8 +38,8 @@ class Login extends Controller
             $access_id = $user->rbac($username);
             if ($access_id == 3) {
                $status = 0;
-               session('username',$username);
-               session('uid',$data_user[0]['id']);
+               session('name',$username);
+               session('ucid',$data_user[0]['id']);
             } else {
                 $status = 3;
             }

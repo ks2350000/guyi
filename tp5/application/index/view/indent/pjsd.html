@@ -20,9 +20,7 @@
 						<li>
 							<a href="{:url('geren/wdsc')}" class="db fs16">我的收藏</a>
 						</li>
-						<li>
-							<a href="{:url('geren/wdgz')}" class="db fs16">我的关注</a>
-						</li>
+						
 						<li>
 							<a href="{:url('geren/xgmm')}" class="db fs16">修改密码</a>
 						</li>
@@ -47,62 +45,20 @@
 					<div class="dark-tit line-bot clearfix">
 						<h3 class="fl fs26">评价晒单</h3>
 						<p class="fr slide-t-nav">
-							<a href="#" class="on fs14 radius3">待评价商品</a>
-							<a href="#" class="fs14 radius3">已评价商品</a>
+							<a href="{:url('indent/pjsd')}" class="on fs14 radius3">待评价商品</a>
+							<a href="{:url('indent/ypj')}" class="fs14 radius3">已评价商品</a>
 						</p>
 					</div>
 					<div class="fav-list evaluate-list mt10">
-						<ul class="clearfix">
-							<li>
-								<a href="#" class="pro "><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
-								<a href="#" class="tit fs14 full-db darkgray over">北京椿龄文化墙角一枝梅</a>
-								<span class="fs14 full-db"><em class="orange">29.90</em> 元</span>
-								<span class="fs12 full-db">95127人评价</span>
-								<a href="__PUBLICA__/indent/pjsd_pj.html" class="orange-but mt5 fs14">评价商品</a>
-							</li>
-							<li>
-								<a href="#" class="pro "><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
-								<a href="#" class="tit fs14 full-db darkgray over">北京椿龄文化墙角一枝梅</a>
-								<span class="fs14 full-db"><em class="orange">29.90</em> 元</span>
-								<span class="fs12 full-db">95127人评价</span>
-								<a href="__PUBLICA__/indent/pjsd_pj.html" class="orange-but mt5 fs14">评价商品</a>
-							</li>
-							<li>
-								<a href="#" class="pro "><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
-								<a href="#" class="tit fs14 full-db darkgray over">北京椿龄文化墙角一枝梅</a>
-								<span class="fs14 full-db"><em class="orange">29.90</em> 元</span>
-								<span class="fs12 full-db">95127人评价</span>
-								<a href="__PUBLICA__/indent/pjsd_pj.html" class="orange-but mt5 fs14">评价商品</a>
-							</li>
-							<li>
-								<a href="#" class="pro "><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
-								<a href="#" class="tit fs14 full-db darkgray over">北京椿龄文化墙角一枝梅</a>
-								<span class="fs14 full-db"><em class="orange">29.90</em> 元</span>
-								<span class="fs12 full-db">95127人评价</span>
-								<a href="__PUBLICA__/indent/pjsd_pj.html" class="orange-but mt5 fs14">评价商品</a>
-							</li>
-							<li>
-								<a href="#" class="pro "><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
-								<a href="#" class="tit fs14 full-db darkgray over">北京椿龄文化墙角一枝梅</a>
-								<span class="fs14 full-db"><em class="orange">29.90</em> 元</span>
-								<span class="fs12 full-db">95127人评价</span>
-								<a href="__PUBLICA__/indent/pjsd_pj.html" class="orange-but mt5 fs14">评价商品</a>
-							</li>
-							<li>
-								<a href="#" class="pro "><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
-								<a href="#" class="tit fs14 full-db darkgray over">北京椿龄文化墙角一枝梅北京椿龄文化墙角一枝梅</a>
-								<span class="fs14 full-db"><em class="orange">29.90</em> 元</span>
-								<span class="fs12 full-db">95127人评价</span>
-								<a href="__PUBLICA__/indent/pjsd_pj.html" class="orange-but mt5 fs14">评价商品</a>
-							</li>
+						<ul class="clearfix" id="sp">
+							
 						</ul>
 					</div>
 					<div class="tab-pages mt10">
-						<a href="#" class="tab-prev tab-btn">上一页</a>
-						<a href="#" class="page-btn current">1</a>
-						<a href="#" class="page-btn">2</a>
-						<a href="#" class="page-btn">3</a>
-						<a href="#" class="tab-next tab-btn">下一页</a>
+						<a id="aa" href="" class="tab-prev tab-btn">首页</a>
+						<a id="ab" href="" class="page-btn current">上一页</a>
+						<a id="ac" href="" class="page-btn">下一页</a>
+						<a id="ad" href="" class="page-btn">尾页</a>
 					</div>
 
 				</div>
@@ -112,3 +68,54 @@
 		<!--/end-->
 
 {include file="../application/index/view/public/footer.html" /}
+
+<script type="text/javascript">
+    var table = $('#sp');
+    var aa = $('#aa');
+    var ab = $('#ab');
+    var ac = $('#ac');
+    var ad = $('#ad');
+    
+    $.ajax({
+        'type':'get',
+        'url':"{:url('indent/pages')}",
+        'data':{page:1},
+        'async':true,
+        'success':success,
+    });
+
+    function success(data)
+    {
+        table.html('');
+        //console.log(data);
+        var data = JSON.parse(data);
+        
+        for (var i=0; i<data.user[0].length; i++) {
+            var pname = data.user[0][i].pic_name;
+            var cname = data.user[0][i].cname;
+            var money = data.user[0][i].money;
+            var evanum = data.user[0][i].evanum;
+            var cmid = data.user[0][i].cmid;
+            var oid = data.user[0][i].order_id;
+            //console.log(data.user[0][i]);
+            $('<li><a href="#" class="pro "><span><img src="'+ pname +'" alt=""/></span></a><a href="#" class="tit fs14 full-db darkgray over">'+ cname +'</a><span class="fs14 full-db"><em class="orange">'+ money +'.00</em> 元</span><span class="fs12 full-db">'+ evanum +'人评价</span><a href="{:url('indent/pjsd_pj')}?cmid='+cmid+'&oid='+ oid +'" class="orange-but mt5 fs14">评价商品</a></li>').appendTo($('#sp'));
+        }
+        //http://1.php?page=1
+        //console.log(test(data.url.next));
+        aa.attr("href",'javascript:test("'+ data.url.first +'")');
+        ab.attr("href",'javascript:test("'+ data.url.prev +'")');
+        ac.attr("href",'javascript:test("'+ data.url.next +'")');
+        ad.attr("href",'javascript:test("'+ data.url.end +'")');
+    }
+
+    function test(url)
+    {
+        $.ajax({
+            'type':'get',
+            'url':url,
+            'data':null,
+            'async':true,
+            'success':success
+        });
+    }
+</script>

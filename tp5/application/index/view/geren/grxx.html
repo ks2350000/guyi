@@ -126,9 +126,7 @@
 						<li>
 							<a href="{:url('geren/wdsc')}" class="db fs16">我的收藏</a>
 						</li>
-						<li>
-							<a href="{:url('geren/wdgz')}" class="db fs16">我的关注</a>
-						</li>
+						
 						<li>
 							<a href="{:url('geren/xgmm')}" class="db fs16">修改密码</a>
 						</li>
@@ -154,11 +152,13 @@
 						<h3 class="fl fs26">个人信息</h3>
 					</div>
 					<div class="user-info mt50 clearfix">
-						<form action="">
+						{volist name="data" id="vol"}
+						<form action="{:url('user/mode')}" method="post" enctype="multipart/form-data">
+							
 							<div class="fl base-info">
 								<ul>
 									<li>
-										<label class="fl l-option">姓名：</label><input type="text" class="fl ml10" placeholder="">
+										<label class="fl l-option">姓名：</label><input type="text" class="fl ml10" value="{$vol.name}" name="username">
 									</li>
 									<li>
 										<label class="fl l-option">生日：</label>
@@ -194,28 +194,31 @@
 									<li class="radio-li">
 										<label class="fl l-option">性别：</label>
 										<div class="radio-box">
-											<input type="radio" class="radio-inline" checked><label class="fs14">男</label>
-											<input type="radio" class="ml10 radio-inline"><label class="fs14">女</label>
+											<input type="radio" class="radio-inline" name="sex" checked value="1"><label class="fs14">男</label>
+											<input type="radio" name="sex" class="ml10 radio-inline" value="0"><label class="fs14">女</label>
 										</div>
 									</li>
 									<li>
-										<label class="fl l-option">电话：</label><input type="text" class="fl ml10" placeholder="">
+										<label class="fl l-option">电话：</label><input type="text" class="fl ml10" name="phone" value="{$vol.phone}">
 									</li>
 									<li>
-										<label class="fl l-option">Q Q：</label><input type="text" class="fl ml10" placeholder="">
+										<label class="fl l-option">Q Q：</label><input type="text" class="fl ml10" name="qq" value="{$vol.user_qq}">
 									</li>
 									<li>
-										<label class="fl l-option">邮箱：</label><input type="text" class="fl ml10" placeholder="">
+										<label class="fl l-option">邮箱：</label><input type="text" class="fl ml10" name="email" placeholder="" value="{$vol.email}">
 									</li>
-									<li class="but-li pl10"><input type="button" class="green-but radius3 fs16 ml50" value="保存修改"></li>
+									<li class="but-li pl10"><input type="submit" class="green-but radius3 fs16 ml50" value="保存修改"></li>
 								</ul>
 							</div>
 							<div class="fr user-photo pr50 mr10">
-								<p class="photo"><img src="__PUBLIC_INDEX__/img/photo.jpg" alt="" /></p>
-								<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="更换头像" onClick="f.click()" class="edit_photo fs14 green radius3 mt10">
-								<input type="file" id="f" onChange="txt.value=this.value" name="f" class="files" size="1" hidefocus>
+								<p class="photo container" style="width:170px;height:150px;background-color:#ccc;">
+									<img id="img" style="display:block;" src="{$vol.user_img}">
+								</p>
+								<input type="file" name="image" id="phot" class="edit_photo fs14 green radius3 mt10">
+								
 							</div>
 						</form>
+						{/volist}
 
 					</div>
 
@@ -225,3 +228,30 @@
 		</div>
 		<!--/end-->
 {include file="../application/index/view/public/footer.html" /}
+<script type="text/javascript">
+	
+	document.getElementById("phot").addEventListener("change",function(e){
+      var files =this.files;
+      var img = new Image();
+      var reader =new FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onload =function(e){
+        var dx =(e.total/1024)/1024;
+        if(dx>=2){
+          alert("文件大小大于2M");
+          return;
+        }
+        img.src =this.result;
+        img.style.width ="100%";
+        img.style.height ="90%";
+        document.querySelector('.container').appendChild(img);
+      }
+      
+    })
+
+    $('#phot').click(function () {
+    	$('#img').css('display','none');
+    })
+
+
+</script>

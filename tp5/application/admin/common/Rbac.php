@@ -11,7 +11,7 @@ class Rbac extends Controller
 
 		$openid = Session::get('openid');
 		$idstr = Session::get('idstr');
-		$name = Session::get('username');
+		$name = Session::get('name');
 		//dump(Session::get());
 		
 		$result = Db::name('user')

@@ -65,7 +65,11 @@
 						</div>						
 						<div class="shopcar-btn clearfix fl">
 							<a href="{:url('store/shopping')}" class="box-s">
-								购物车（0）
+								{empty name="$Think.session.uid"}
+									购物车（0）
+								{else /}
+									购物车（{$Think.session.count}）
+								{/empty}
 							</a>
 						</div>
 						{if condition="(empty($username) eq false)"}
@@ -87,10 +91,12 @@
 				<div class="logo clearfix">
 					<a href="{:url('index/index')}"></a>
 				</div>
-				<div class="search clearfix fr ra5">
-					<input type="text" class="fl" name="" id="" value="" placeholder="请输入您要搜索的内容" />
-					<input type="button" name="" id="" value="搜索" class="fl box-s" />
-				</div>
+				<form action="{:url('store/mall')}" method="post">
+					<div class="search clearfix fr ra5">
+						<input type="text" class="fl" name="content" value="" placeholder="请输入您要搜索的内容" />
+						<input type="submit" name="" id="" style="width:82px;height:42px;border:none;background-color:#750000;border-radius: 4px;font-size:18px;" value="搜索" class="fl box-s" />
+					</div>
+				</form>
 			</div>
 		</div>
 		<!--header end-->

@@ -20,9 +20,7 @@
 						<li>
 							<a href="{:url('geren/wdsc')}" class="db fs16">我的收藏</a>
 						</li>
-						<li>
-							<a href="{:url('geren/wdgz')}" class="db fs16">我的关注</a>
-						</li>
+						
 						<li>
 							<a href="{:url('geren/xgmm')}" class="db fs16">修改密码</a>
 						</li>
@@ -62,22 +60,31 @@
 							<th width="24%" rowspan="2">订单状态</th>
 						</tr>
 					</table>
+					{volist name="odata" id="ovol"}
 					<table class="table_1 mt15">
 						<tr>
 							<th align="left" colspan="6">
-								<p class="fs12"><span class="fr pr10">订单金额：59.80</span>订单号：201410110000152029　　　　下单时间：2014-10-11 13:26:39</p>
+								<p class="fs12"><span class="fr pr10">订单金额：{$ovol.money}.00</span>订单号：{$ovol.order}　　　　下单时间：{$ovol.createtime}</p>
 							</th>
 						</tr>
+						{volist name="data" id="vol"}
+						{if condition="$vol.order_id == $ovol.oid"}
 						<tr>
-							<td width="30%">
+							<td>
 								<p class="clearfix o-goods-info">
-									<a href="#" class="fl"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""></span></a>
-									<span class="fl tit ">北京椿龄文化墙角一枝梅北京椿龄文化墙角一枝梅</span>
+									{volist name="pic" id="vole"}
+									{if condition="($vole.cid eq $vol.coid)"}
+									<a href="#" class="fl"><span><img src="{$vole.pic_name}" alt=""></span></a>
+									{/if}
+									{/volist}
+									<span class="fl tit ">{$vol.cname}</span>
 								</p>
 							</td>
-							<td width="16%" align="center">￥1100</td>
-							<td width="15%" align="center">1</td>
-							<td width="15%" rowspan="2" align="center">李东海</td>
+							<td align="center">￥{$vol.cmoney}</td>
+							<td align="center">{$vol.com_num}</td>
+							{/if}
+						{/volist}
+							
 							<td width="12%" rowspan="2" align="center">已收货<br>
 								<a href="#" class="orange">订单详情</a>
 							</td>
@@ -85,65 +92,10 @@
 								<a href="__PUBLICA__/indent/sqsh.html" class="a-sqsh green radius3">申请售后</a>
 							</td>
 						</tr>
-						<tr>
-							<td>
-								<p class="clearfix o-goods-info">
-									<a href="#" class="fl"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""></span></a>
-									<span class="fl tit ">北京椿龄文化墙角一枝梅北京椿龄文化墙角一枝梅</span>
-								</p>
-							</td>
-							<td align="center">￥1100</td>
-							<td align="center">1</td>
-						</tr>
+						
+						
 					</table>
-					<table class="table_1 mt15">
-						<tr>
-							<th align="left" colspan="6">
-								<p class="fs12"><span class="fr pr10">订单金额：59.80</span>订单号：201410110000152029　　　　下单时间：2014-10-11 13:26:39</p>
-							</th>
-						</tr>
-						<tr>
-							<td width="30%">
-								<p class="clearfix o-goods-info">
-									<a href="#" class="fl"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""></span></a>
-									<span class="fl tit ">北京椿龄文化墙角一枝梅北京椿龄文化墙角一枝梅</span>
-								</p>
-							</td>
-							<td width="16%" align="center">￥1100</td>
-							<td width="15%" align="center">1</td>
-							<td width="15%" align="center">李东海</td>
-							<td width="12%" align="center">已收货<br>
-								<a href="#" class="orange">订单详情</a>
-							</td>
-							<td width="12%" align="center">
-								<a href="__PUBLICA__/indent/sqsh.html" class="a-sqsh green radius3">申请售后</a>
-							</td>
-						</tr>
-					</table>
-					<table class="table_1 mt15">
-						<tr>
-							<th align="left" colspan="6">
-								<p class="fs12"><span class="fr pr10">订单金额：59.80</span>订单号：201410110000152029　　　　下单时间：2014-10-11 13:26:39</p>
-							</th>
-						</tr>
-						<tr>
-							<td width="30%">
-								<p class="clearfix o-goods-info">
-									<a href="#" class="fl"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""></span></a>
-									<span class="fl tit ">北京椿龄文化墙角一枝梅北京椿龄文化墙角一枝梅</span>
-								</p>
-							</td>
-							<td width="16%" align="center">￥1100</td>
-							<td width="15%" align="center">1</td>
-							<td width="15%" align="center">李东海</td>
-							<td width="12%" align="center">已收货<br>
-								<a href="#" class="orange">订单详情</a>
-							</td>
-							<td width="12%" align="center">
-								<a href="__PUBLICA__/indent/sqsh.html" class="a-sqsh green radius3">申请售后</a>
-							</td>
-						</tr>
-					</table>
+					{/volist}
 					<div class="tab-pages">
 						<a href="#" class="tab-prev tab-btn">上一页</a>
 						<a href="#" class="page-btn current">1</a>

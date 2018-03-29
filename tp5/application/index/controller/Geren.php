@@ -13,6 +13,10 @@ class Geren extends Controller
     {
        $kk = new Base();
       $kk -> zxc();
+      $user = model('User');
+      $userData = $user->where('name',session('username'))->select();
+      
+      $this->assign('data',$userData);
       return $this->fetch();
     }
 

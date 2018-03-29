@@ -84,7 +84,7 @@ class Product extends Base
 	public function addspecial()
 	{
 		$special = model('Special');
-		$data = $special->where('uid',session('uid'))->where('clos',0)->select()->toArray();
+		$data = $special->where('uid',session('ucid'))->where('clos',0)->select()->toArray();
 		$this->assign('data',$data);
 
 		return $this->fetch('add_special');
@@ -96,8 +96,8 @@ class Product extends Base
 		//特卖表 商品表
 		$special = model('Special');
 		$comm = model('commodity');
-		$data = $special->where('uid',session('uid'))->select()->toArray();
-		$commData = $comm->where('uid',session('uid'))->where('speid',0)->where('close',0)->select()->toArray();
+		$data = $special->where('uid',session('ucid'))->select()->toArray();
+		$commData = $comm->where('uid',session('ucid'))->where('speid',0)->where('close',0)->select()->toArray();
 		$this->assign('data',$data);
 		$this->assign('commData',$commData);
 		return $this->fetch('specials');

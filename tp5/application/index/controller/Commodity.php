@@ -20,10 +20,14 @@ class Commodity extends Controller
         $data = $comm->selshangpin($cid);
         $pic = model('Pic');
         $picData = $pic->where('cid',$cid)->select()->toArray();
-        /*dump($picData);
-        die();*/
+        //推荐 同类商品
+        $classCom = $comm->selclass($data[0]['cid']);
+        //推荐都喜欢
+        $like = $comm->prolike();
         $this->assign('comdata',$data);
         $this->assign('picData',$picData);
+        $this->assign('classCom',$classCom);
+        $this->assign('like',$like);
     	return $this->fetch();
     }
  
@@ -39,5 +43,7 @@ class Commodity extends Controller
             return 4;
         }*/
     }
+
+   
 
 }

@@ -26,4 +26,67 @@ class User extends Model
 
 		return $access_id;
 	}
+
+	public function up()
+	{
+		if (!empty(request()->file('image'))) {
+
+			$files = request()->file('image');
+			$info = $files->move(ROOT_PATH . 'public' . DS . 'uploads');
+			$path =  DS . 'uploads/' . $info->getSavename(); 
+			$path = str_replace('\\', '/', $path);
+			$data = [
+				'name'		=>	input('username'),
+				'sex'		=>	input('sex'),
+				'phone'		=>	input('phone'),
+				'user_qq'	=>	input('qq'),
+				'email'		=>	input('email'),
+				'user_img'	=>	$path,
+			];
+
+			return $this->where('id',session('uid'))->update($data);
+		} else {
+			$data = [
+				'name'		=>	input('username'),
+				'sex'		=>	input('sex'),
+				'phone'		=>	input('phone'),
+				'user_qq'	=>	input('qq'),
+				'email'		=>	input('email'),
+				
+			];
+
+			return $this->where('id',session('uid'))->update($data);
+		}	
+	}
+
+	public function upsh()
+	{
+		if (!empty(request()->file('f'))) {
+
+			$files = request()->file('f');
+			$info = $files->move(ROOT_PATH . 'public' . DS . 'uploads');
+			$path =  DS . 'uploads/' . $info->getSavename(); 
+			$path = str_replace('\\', '/', $path);
+			$data = [
+				'zname'		=>	input('zname'),
+				'phone'		=>	input('phone'),
+				'email'		=>	input('email'),
+				'city'		=>	input('shengfen') .','. input('shi') .','.input('xianqu'),
+				'user_img'	=>	$path,
+				'is_admin'	=> 	2,
+			];
+
+			return $this->where('id',session('uid'))->update($data);
+		} else {
+			$data = [
+				'zname'		=>	input('zname'),
+				'phone'		=>	input('phone'),
+				'email'		=>	input('email'),
+				'is_admin'	=>	2,
+				'city'		=>	input('shengfen') .','. input('shi') .','.input('xianqu'),
+			];
+
+			return $this->where('id',session('uid'))->update($data);
+		}	
+	}
 }

@@ -30,4 +30,28 @@ class Commodity extends Model
 		
 		return $data;
 	}
+
+	public function dd()
+	{
+		return $this->alias('c')
+					->where('c.uid',session('ucid'))
+					->join('sc_buy b','b.coid=c.id')
+					->field('c.id as cid, c.name as cname, c.money, c.cid, b.order_id, b.com_pirce, b.createtime, b.com_num,b.fh')
+					->select()->toArray();
+	}
+
+	public function ddgl($oid)
+	{
+		return $this->alias('c')
+					->where('c.uid',session('ucid'))
+					->where('order_id',$oid)
+					->join('sc_buy b','b.coid=c.id')
+					->field('c.name as cname, c.money, c.id as cid, b.order_id, b.com_pirce, b.createtime, b.com_num')
+					->select()->toArray();
+	}
+
+	public function countMoney()
+	{
+		
+	}
 }

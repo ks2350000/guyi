@@ -12,6 +12,7 @@ class Art extends Controller
     {
       $kk = new Base();
       $kk -> zxc();
+      
       return $this->fetch();
     }
 
@@ -26,6 +27,7 @@ class Art extends Controller
     {
       $kk = new Base();
       $kk -> zxc();
+      
       return $this->fetch();
     }
 

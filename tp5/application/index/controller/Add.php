@@ -40,9 +40,17 @@ class Add extends Controller
 		}
 	}
 
+	//结算
 	public function checkOut()
-	{
-		
+	{	
+		//生成订单编号
+		$order = mt_rand('11111111111','99999999999');
+		$or = '11510' . $order;
+		$ord = model('Orderid');
+		$ord->data(['order'=>$or,'money'=>input('total'),'shid'	=>	input('siteid'),]);
+		$ord->save();
+		$oid = $ord->oid;
+
 		$buy = model('Buy');
 		$data = [
 			'uid'	=>	session('uid'),
@@ -50,6 +58,7 @@ class Add extends Controller
 			'com_num'	=>	input('comnum'),
 			'site_id'	=>	input('siteid'),
 			'com_pirce'	=>	input('total'),
+			'order_id'	=>	$oid,
 		];
 		if ($buy->save($data)) {
 			$bid = $buy->id;
@@ -68,4 +77,6 @@ class Add extends Controller
 			$this->redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
+
+	
 }
