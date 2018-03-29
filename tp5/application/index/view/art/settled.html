@@ -1,13 +1,19 @@
 {include file="../application/index/view/public/index_tou.html" /}
+	<style type="text/css">
 		
+		.us::-webkit-input-placeholder{
+			color:red;
+		}
+		 
+	</style>
 		<!--navbar star-->
 		<div class="navbar clearfix">
 			<div class="content clearfix">
 				<ul>
-					<li><a href="__PUBLICA__/index/index.html">首页</a></li>
-					<li><a href="__PUBLICA__/zhuan/special.html">专场</a></li>
-					<li><a href="__PUBLICA__/store/mall.html">商城</a></li>
-					<li class="cur"><a href="__PUBLICA__/art/artist.html">艺术家</a></li>
+					<li><a href="{:url('index/index')}">首页</a></li>
+					<li><a href="{:url('zhuan/special')}">专场</a></li>
+					<li><a href="{:url('store/mall')}">商城</a></li>
+					<li class="cur"><a href="{:url('art/artist')}">艺术家</a></li>
 				</ul>
 			</div>
 		</div>
@@ -50,93 +56,60 @@
 					<div class="media-bottom clearfix">
 						<div class="meida-bd clearfix">							
 							<div class="list">
-								<ul>
-									<li class="kuan">
-										<p class="bt fl">真实姓名：</p>
-										<input type="text" class="fl" name="" id="" value="">
-									</li>
-									<li class="kuan">
-										<p class="bt fl">手机号码：</p>
-										<input type="text" class="fl" name="" id="" value="">
-									</li>
-									<li class="kuan">
-										<p class="bt fl">邮箱地址：</p>
-										<input type="text" class="fl" name="" id="" value="">
-									</li>
-									<li class="kuan">
-										<p class="bt fl">联系电话：</p>
-										<input type="text" class="fl" name="" id="" value="">
-									</li>
-									<li class="kuan">
-										<p class="bt fl">所在地区：</p>
-										<div class="select_box"><div class="select_showbox" style="cursor: pointer;">请选择角色</div><ul class="select_option"><li class="selected">请选择角色</li><li>宋江</li><li>鲁智深</li><li>武松</li><li>林冲</li></ul></div><select name="classid" id="choose" class="selecttwo fl">
-											<option value="0">请选择地区</option>
-											<option value="0">安徽省</option>
-											<option value="1">江西省</option>
-										</select>
-										<div class="select_box"><div class="select_showbox" style="cursor: pointer;">请选择角色</div><ul class="select_option"><li class="selected">请选择角色</li><li>宋江</li><li>鲁智深</li><li>武松</li><li>林冲</li></ul></div><select name="classid" id="choose" class="selecttwo fl">
-											<option value="0">请选择地区</option>
-											<option value="0">安庆市</option>
-											<option value="1">合肥市</option>
-										</select>
-										<div class="select_box"><div class="select_showbox" style="cursor: pointer;">请选择角色</div><ul class="select_option"><li class="selected">请选择角色</li><li>宋江</li><li>鲁智深</li><li>武松</li><li>林冲</li></ul></div><select name="classid" id="choose" class="selecttwo fl">
-											<option value="0">请选择地区</option>
-											<option value="0">高新区</option>
-											<option value="1">蜀山区</option>
-										</select>
-									</li>
-									<li class="kuan">
-										<p class="bt fl">毕业院校：</p>
-										<input type="text" class="fl" name="" id="" value="">
-									</li>
-									<li class="kuan">
-										<p class="bt fl">类型：</p>
-										<div class="fl clearfix xuanze">
-											<input type="checkbox" name="check" id="check" value="" class="fl"/>
-											<span class="fl">国画</span>
-										</div>
-										<div class="fl clearfix xuanze">
-											<input type="checkbox" name="check" id="check" value="" class="fl"/>
-											<span class="fl">书法</span>
-										</div>
-										<div class="fl clearfix xuanze">
-											<input type="checkbox" name="check" id="check" value="" class="fl"/>
-											<span class="fl">油画</span>
-										</div>
-										<div class="fl clearfix xuanze">
-											<input type="checkbox" name="check" id="check" value="" class="fl"/>
-											<span class="fl">雕塑</span>
-										</div>
-										<div class="fl clearfix xuanze">
-											<input type="checkbox" name="check" id="check" value="" class="fl"/>
-											<span class="fl">版画</span>
-										</div>
-										<div class="fl clearfix xuanze">
-											<input type="checkbox" name="check" id="check" value="" class="fl"/>
-											<span class="fl">水彩粉画</span>
-										</div>
-										<div class="fl clearfix xuanze">
-											<input type="checkbox" name="check" id="check" value="" class="fl"/>
-											<span class="fl">其他</span>
-										</div>
-									</li>
-									<li class="kuan">
-										<p class="bt fl">个人头像：</p>
-										<div class="tu clearfix fl">
-											<img src="__PUBLIC_INDEX__/img/tu.png">
-											<span></span>
-										</div>
-										<input type="button" value="上传" class="fl">
-									</li>
-									<li class="kuan">
-										<p class="bt fl">个人简介：</p>
-										<textarea name="" rows="5" cols="" class="box-s"></textarea>
-									</li>
-									<li class="kuan">
-										<p class="bt fl"></p>
-										<a href="__PUBLICA__/art/zuihou.html" class="btn db fl ra3">保存提交</a>
-									</li>
-								</ul>
+								<form action="{:url('addart/add')}" id="form_tj" method="post" enctype="multipart/form-data">
+									<ul>
+										<li class="kuan">
+											<p class="bt fl">真实姓名：</p>
+											<input type="text" class="fl" name="zname" id="user" value="">
+										</li>
+										<li class="kuan">
+											<p class="bt fl">手机号码：</p>
+											<input type="text" class="fl" name="phone" id="ph" value="">
+										</li>
+										<li class="kuan">
+											<p class="bt fl">邮箱地址：</p>
+											<input type="text" class="fl" name="email" id="em" value="">
+										</li>
+										
+										<li class="kuan">
+											<p class="bt fl">所在地区：</p>
+											<div data-toggle="distpicker" style="float:left;">
+									        <div class="form-group" style=" width:100px; float:left;">
+									          <label class="sr-only" for="province1"></label>
+									          <select style="width:100px;" name="shengfen" class="form-control" id="province1"></select>
+									        </div>
+									        <div class="form-group" style=" width:120px;float:left; margin-left: 10px;">
+									          <label class="sr-only" for="city1"></label>
+									          <select style="width:120px;" name="shi" class="form-control" id="city1"></select>
+									        </div>
+									        <div class="form-group" style=" width:150px;float:left; margin-left: 10px;">
+									          <label class="sr-only" for="district1"></label>
+									          <select style="width:150px;" name="xianqu" class="form-control" id="district1"></select>
+									        </div>
+									      </div>
+										</li>
+										
+										<li class="kuan">
+											<p class="bt fl">个人头像：</p>
+											<div class="tu clearfix fl container">
+												
+												<span></span>
+											</div>
+											
+											<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传头像" onClick="f.click()" class="add_pic fs14">
+											<input type="file" id="f" onChange="txt.value=this.value" name="f" style=" display:none;height:26px;" class="files " size="1" hidefocus>
+
+										</li>
+										<li class="kuan">
+											<p class="bt fl">个人简介：</p>
+											<textarea name="content" rows="5" cols="" class="box-s"></textarea>
+										</li>
+										<li class="kuan">
+											<p class="bt fl"></p>
+											<button type="button" id="submit" style="width:100px;height:35px; background-color:#930000" class="btn db fl ra3">保存提交</button>
+										</li>
+									</ul>
+								</form>
 							</div>			
 						</div>
 					</div>					
@@ -146,3 +119,77 @@
 		<!--settled end-->		
 		
 {include file="../application/index/view/public/footer.html" /}
+<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<script src="__STATIC__/js/distpicker.data.js"></script>
+<script src="__STATIC__/js/distpicker.js"></script>
+<script src="__STATIC__/js/main.js"></script>
+
+	<script type="text/javascript">
+	
+	document.getElementById("f").addEventListener("change",function(e){
+      var files =this.files;
+      var img = new Image();
+      var reader =new FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onload =function(e){
+        var dx =(e.total/1024)/1024;
+        if(dx>=2){
+          alert("文件大小大于2M");
+          return;
+        }
+        img.src =this.result;
+        img.style.width ="100%";
+        img.style.height ="100%";
+        document.querySelector('.container').appendChild(img);
+      }
+      
+    })
+
+
+    $('#submit').on('click', function(){
+			$.ajax({
+				type:'POST',
+				url:"{:url('addart/add')}",
+				data:$("#form_tj").serialize(),
+				dataType:"JSON",
+				success:function(data){
+					console.log(data);
+					switch (data) {
+						case'zname不能为空':
+							$('#user').attr('placeholder','请输入姓名');
+							$('#user').addClass('us');
+							break;
+						case'phone不能为空':
+							$('#ph').attr('placeholder','请输入手机号');
+							$('#ph').addClass('us');
+							break;
+							
+						case'phone不符合指定规则':
+							$('#ph').val('');
+							$('#ph').attr('placeholder','请输入正确手机号');
+							$('#ph').addClass('us');
+							break;
+						case'email不能为空':
+							$('#em').attr('placeholder','请输入邮箱');
+							$('#em').addClass('us');
+							break;
+						case'email不符合指定规则':
+							$('#em').val('');
+							$('#em').attr('placeholder','请输入正确的邮箱地址');
+							$('#em').addClass('us');
+							break;
+						case 1:
+							window.location.href = "{:url('art/zuihou')}";
+							break;
+						case 2:
+							window.location.href = "{:url('login/sign')}";
+							break;
+
+					}
+				}
+			})
+
+		})
+
+</script>

@@ -10,11 +10,20 @@ class Chuli extends Controller
 	{
 
 		Session::delete('username');
+<<<<<<< HEAD
+=======
+		Session::delete('uid');
+		Session::delete('admin');
+		Session::delete('count');
+>>>>>>> dev
 		Session::delete('password');
 		Session::delete('openid');
 		Session::delete('idstr');
 		Session::delete('xlwbtx');
+<<<<<<< HEAD
 		Session::delete('acce_id');
+=======
+>>>>>>> dev
 		$this->redirect('Index/index');
 	}
 }

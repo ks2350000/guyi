@@ -1,14 +1,31 @@
 <!DOCTYPE html>
-<h{include file="../application/index/view/public/index_tou.html" /}
-		
+{include file="../application/index/view/public/index_tou.html" /}
+<meta http-equiv="refresh" content="5;url={:url('login/sign')}" />  
+<script type="text/javascript">
+	$(function () {
+		var wait = $(".second").html(); 
+        timeOut();  
+        /**  
+         * 实现倒计时  
+         */
+        function timeOut() {  
+            if(wait != 0) {  
+                setTimeout(function() {  
+                    $('.second').text(--wait);  
+                    timeOut();  
+                }, 1000);  
+            }  
+        }  
+	})
+</script>
 		<!--navbar star-->
 		<div class="navbar clearfix">
 			<div class="content clearfix">
 				<ul>
-					<li><a href="__PUBLICA__/index/index.html">首页</a></li>
-					<li><a href="__PUBLICA__/zhuan/special.html">专场</a></li>
-					<li><a href="__PUBLICA__/store/mall.html">商城</a></li>
-					<li class="cur"><a href="__PUBLICA__/art/artist.html">艺术家</a></li>
+					<li><a href="{:url('index/index')}">首页</a></li>
+					<li><a href="{:url('zhuan/special')}">专场</a></li>
+					<li><a href="{:url('store/mall')}">商城</a></li>
+					<li class="cur"><a href="{:url('art/artist')}">艺术家</a></li>
 				</ul>
 			</div>
 		</div>
@@ -50,12 +67,12 @@
 					</div>
 					<div class="success-bottom clearfix box-s">
 						<div class="success clearfix ta-c">
-							<img src="__PUBLIC_INDEX__/img/success.png">
+							<img src="__STATIC__/img/success.png">
 							<p class="tit ta-c">
 								恭喜您，注册成功！
 							</p>
 							<p class="fu-tit ta-c">
-								<span>5</span>
+								<span class="second">5</span>
 								秒后自动跳转到<a href="sign.html">登录</a>页
 							</p>
 						</div>

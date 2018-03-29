@@ -13,7 +13,11 @@ class oauthhui extends Controller
     //应用的APPKEY
     public $app_secret = "fc3538def16e91add261b2a954f724e4";
     //成功授权后的回调地址
+<<<<<<< HEAD
     public $my_url = "http://www.hellowk.cn/index/oauthhui/qq.html";
+=======
+    public $my_url = "http://guyi.hellowk.cn/index/oauthhui/qq.html";
+>>>>>>> dev
     
     public function qq()
     {
@@ -84,7 +88,11 @@ class oauthhui extends Controller
            $state = md5(uniqid(rand(), TRUE));
             Session::set('state',$state);
 
+<<<<<<< HEAD
            header("Location:https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101467328&redirect_uri=http://www.hellowk.cn/index/oauthhui/qq.html&scope='$state'");
+=======
+           header("Location:https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101467328&redirect_uri=http://guyi.hellowk.cn/index/oauthhui/qq.html&scope='$state'");
+>>>>>>> dev
         }
 
     }
@@ -107,10 +115,17 @@ class oauthhui extends Controller
     public function weibo () {
 
 
+<<<<<<< HEAD
         $callback_url = "http://www.hellowk.cn/index/oauthhui/weibo.html";//回调地址,必须是提交网站域名下的某一个url
         $client_id = '1062608125';
         $client_secret = 'a5f8c6a7ede6da0a79003ec0ec7d3f3d';
         $url = "http://www.hellowk.cn";//最后返回的页面
+=======
+        $callback_url = "http://guyi.hellowk.cn/index/oauthhui/weibo.html";//回调地址,必须是提交网站域名下的某一个url
+        $client_id = '2970462500';
+        $client_secret = '5bb606796660ce0bf48292397ed46600';
+        $url = "http://guyi.hellowk.cn";//最后返回的页面
+>>>>>>> dev
         $obj = new SaeTOAuthV2($client_id, $client_secret);//$client_id就是App Key  $client_secret就是App 
         
          $code = Request::instance()->get('code');

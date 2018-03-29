@@ -1,4 +1,4 @@
-{include file="../application/index/view/public/grxx_tou.html" /}
+{include file="public/grxx_tou" /}
 		<!--Main-wrap-->
 		<div class="main-wrap graybg">
 			<div class="wrapper pt40 pb40">
@@ -7,7 +7,7 @@
 					<div class="fr order-info">
 						<div class="line-bot pt20 pb20 clearfix">
 							<p class="fl l-suc-info">
-								<span class="full-db fs26 darkgray">订单提交成功，应付金额 <em class="orange">999.00</em> 元</span>
+								<span class="full-db fs26 darkgray">订单提交成功，应付金额 <em class="orange">{$compirce}.00</em> 元</span>
 								<span class="full-db fs14 lh30">请您尽快完成支付，支付成功后7天内发货，否则订单会被自动取消</span>
 							</p>
 							<p class="fr r-suc-info tr">
@@ -16,8 +16,8 @@
 							</p>
 						</div>
 						<div class="order-show pt10">
-							<span class="full-db fs14 lh30 darkgray">收货地址     安徽省合肥市蜀山区拓基城市广场 230031（邮编） 孙瑾晨（收） 18056050000</span>
-							<span class="full-db fs14 lh30 darkgray">商品信息     墙角数枝梅，凌寒独自开  X 1</span>
+							<span class="full-db fs14 lh30 darkgray">收货地址    {$siteData[0]['usite']} {$siteData[0]['zip']}（邮编） {$siteData[0]['site_name']}（收） {$siteData[0]['site_phone']}</span>
+							<span class="full-db fs14 lh30 darkgray">商品信息     {$commData[0]['name']}  X {$num}</span>
 						</div>
 					</div>
 				</div>
@@ -33,22 +33,22 @@
 							</div>
 							<div class="pay-style line-bot pb30 pt30 clearfix">
 								<label class="fl fs16 darkgray">支付平台支付</label>
-								<a href="javascript:" class="check-inline check_on ml10"><span><img src="__PUBLIC_INDEX__/img/cft.jpg"/></span><em></em></a>
-								<a href="javascript:" class="check-inline ml10"><span><img src="__PUBLIC_INDEX__/img/zfb.jpg" /></span><em></em></a>
+								<a href="javascript:" class="check-inline check_on ml10"><span><img src="__STATIC__/img/cft.jpg"/></span><em></em></a>
+								<a href="javascript:" class="check-inline ml10"><span><img src="__STATIC__/img/zfb.jpg" /></span><em></em></a>
 							</div>
 							<div class="bank-check line-bot pt30 pb30 clearfix">
 								<label class="fl fs16 darkgray">网银在线支付</label>
 								<div class="fl bank-list clearfix">
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/zh.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/gh.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/jh.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/chinaback.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/yz.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/gf.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/pf.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/ms.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/bh.jpg"></span><em></em></a>
-									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__PUBLIC_INDEX__/img/bank/zx.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/zh.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/gh.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/jh.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/chinaback.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/yz.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/gf.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/pf.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/ms.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/bh.jpg"></span><em></em></a>
+									<a href="javascript:" class="check-inline ml10 mb10"><span><img src="__STATIC__/img/bank/zx.jpg"></span><em></em></a>
 								</div>
 							</div>
 							<div class="next go-pay pt30 clearfix">

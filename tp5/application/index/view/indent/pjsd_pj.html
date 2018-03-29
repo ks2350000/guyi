@@ -6,40 +6,38 @@
 				<div class="fl slide-nav white-box">
 					<ul>
 						<li>
-							<a href="__PUBLICA__/geren/grxx.html" class="db fs16">个人信息</a>
+							<a href="{:url('geren/grxx')}" class="db fs16">个人信息</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/indent/wddd.html" class="db fs16">我的订单</a>
+							<a href="{:url('indent/wddd')}" class="db fs16">我的订单</a>
 						</li>
 						<li class="on">
-							<a href="__PUBLICA__/indent/pjsd.html" class="db fs16">评价晒单</a>
+							<a href="{:url('indent/pjsd')}" class="db fs16">评价晒单</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/geren/shdz.html" class="db fs16">收货地址</a>
+							<a href="{:url('geren/shdz')}" class="db fs16">收货地址</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/geren/wdsc.html" class="db fs16">我的收藏</a>
+							<a href="{:url('geren/wdsc')}" class="db fs16">我的收藏</a>
+						</li>
+						
+						<li>
+							<a href="{:url('geren/xgmm')}" class="db fs16">修改密码</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/geren/wdgz.html" class="db fs16">我的关注</a>
+							<a href="{:url('fund/zhye')}" class="db fs16">账户余额</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/geren/xgmm.html" class="db fs16">修改密码</a>
+							<a href="{:url('fund/zxcz')}" class="db fs16">在线充值</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/fund/zhye.html" class="db fs16">账户余额</a>
+							<a href="{:url('indent/lljl')}" class="db fs16">退货记录</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/fund/zxcz.html" class="db fs16">在线充值</a>
+							<a href="{:url('xiaoxi/zixun')}" class="db fs16">我的咨询</a>
 						</li>
 						<li>
-							<a href="__PUBLICA__/indent/lljl.html" class="db fs16">退货记录</a>
-						</li>
-						<li>
-							<a href="__PUBLICA__/xiaoxi/zixun.html" class="db fs16">我的咨询</a>
-						</li>
-						<li>
-							<a href="__PUBLICA__/xiaoxi/znx.html" class="db fs16">站内信</a>
+							<a href="{:url('xiaoxi/znx')}" class="db fs16">站内信</a>
 						</li>
 					</ul>
 				</div>
@@ -48,12 +46,14 @@
 						<h3 class="fl fs26">评价晒单</h3>
 					</div>
 					<div class="goods-pj">
+						{volist name="comData" id="vol"}
 						<div class="fl pj-goods">
-							<a href="#" class="pro"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""/></span></a>
-							<a href="#" class="tit fs14 full-db darkgray">北京椿龄文化墙角一枝梅</a>
-							<span class="fs14 full-db"><em class="orange">29.90</em> 元</span>
-							<span class="fs12 full-db">95127人评价</span>
+							<a href="#" class="pro"><span><img src="{$vol.pic_name}" alt=""/></span></a>
+							<a href="#" class="tit fs14 full-db darkgray">{$vol.cname}</a>
+							<span class="fs14 full-db"><em class="orange">{$vol.money}.00</em> 元</span>
+							<span class="fs12 full-db">{$vol.evanum}人评价</span>
 						</div>
+						{/volist}
 						<div class="fr pj-info">
 							<div id="xzw_starSys" class="mt20 clearfix">
 								<div id="xzw_starBox" class="fl">
@@ -79,14 +79,17 @@
 								<div class="fl description ml10 fs14"></div>
 							</div>
 							<div class="pj-cont mt15">
-								<form action="">
-									<textarea name="" id="" cols="30" rows="10" placeholder="色泽如何，口感如何，谈谈你的感受吧！"></textarea>
+								<form action="{:url('action/pj')}" method="post">
+									<input type="hidden" name="cmid" value="{$comData[0]['comid']}">
+									<input type="hidden" name="oid" value="{$oid}">
+									<textarea name="conten" id="" cols="30" rows="10" placeholder="谈谈你的感受吧！"></textarea>
 									<div class="pj-but tr mt15">
 										<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="添加图片" onClick="f.click()" class="add_pic fs14">
-										<input type="file" id="f" onChange="txt.value=this.value" name="f" style="height:26px;" class="files" size="1" hidefocus>
+										<input type="file" id="f" onChange="txt.value=this.value" name="f" style="height:26px;" class="files " size="1" hidefocus>
 
-										<input type="button" class="orange-but fs14 ml10" value="提交评价">
+										<input type="submit" class="orange-but fs14 ml10" value="提交评价">
 									</div>
+									<div class="container" style="width:200px;height:150px; background-color:#ccc;"></div>
 								</form>
 							</div>
 
@@ -98,3 +101,24 @@
 		</div>
 		<!--/end-->
 {include file="../application/index/view/public/footer.html" /}
+<script type="text/javascript">
+	
+	document.getElementById("f").addEventListener("change",function(e){
+      var files =this.files;
+      var img = new Image();
+      var reader =new FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onload =function(e){
+        var dx =(e.total/1024)/1024;
+        if(dx>=2){
+          alert("文件大小大于2M");
+          return;
+        }
+        img.src =this.result;
+        img.style.width ="100%";
+        img.style.height ="100%";
+        document.querySelector('.container').appendChild(img);
+      }
+      
+    })
+</script>

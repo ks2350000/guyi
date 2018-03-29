@@ -70,7 +70,11 @@
       {volist name="comData" id="value"}
         <tr>
           <td width="25px"><label><input type="checkbox" name="check[]" value="{$value.id}" class="ace" ><span class="lbl"></span></label></td>
+<<<<<<< HEAD
           <td width="80px">{$value.number}</td>               
+=======
+          <td width="80px">{$value.num}</td>               
+>>>>>>> dev
           <td width="50px">{$value.num}</td>               
           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">{$value.name}</u></td>
           <td width="100px">{$value.dmoney}</td>
@@ -81,7 +85,11 @@
           
           <td class="td-manage">
           <a   href="{:url('prolistaction/stop',['cid'=>$value.id])}" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
+<<<<<<< HEAD
          
+=======
+          <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
+>>>>>>> dev
           <a title="删除" href="javascript:;" id="del" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
          </td>
         </tr>
@@ -96,3 +104,18 @@
 </div>
 </body>
 </html>
+<<<<<<< HEAD
+=======
+<script>
+jQuery(function($) {
+    var oTable1 = $('#sample-table').dataTable( {
+    "aaSorting": [[ 1, "desc" ]],//默认第几个排序
+    "bStateSave": true,//状态保存
+    "aoColumnDefs": [
+      //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+      {"orderable":false,"aTargets":[0,2,3,4,5,8,9]}// 制定列不参与排序
+    ] } );
+        
+</script>
+
+>>>>>>> dev

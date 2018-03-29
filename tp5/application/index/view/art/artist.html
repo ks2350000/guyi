@@ -4,10 +4,10 @@
 		<div class="navbar clearfix">
 			<div class="content clearfix">
 				<ul>
-					<li><a href="__PUBLICA__/index/index.html">首页</a></li>
-					<li><a href="__PUBLICA__/zhuan/special.html">专场</a></li>
-					<li><a href="__PUBLICA__/store/mall.html">商城</a></li>
-					<li class="cur"><a href="__PUBLICA__/art/artist.html">艺术家</a></li>
+					<li><a href="{:url('index/index')}">首页</a></li>
+					<li><a href="{:url('zhuan/special')}">专场</a></li>
+					<li><a href="{:url('store/mall')}">商城</a></li>
+					<li class="cur"><a href="{:url('art/artist')}">艺术家</a></li>
 				</ul>
 			</div>
 		</div>
@@ -34,7 +34,17 @@
 									<li class="">版画</li>
 									<li class="">雕塑</li>
 								</ul>
-								<a href="settled.html" class="shenqin fr">申请签约入驻</a>
+								{empty name="$Think.session.admin"}
+									<a href="{:url('art/settled')}" class="shenqin fr">申请签约入驻</a>
+								{else /}
+									{if condition="$Think.session.admin == 2"}
+									<a href="{:url('/admin/login')}" class="shenqin fr">商户登录</a>
+									<a href="{:url('art/settled')}" class="shenqin fr">申请签约入驻</a>
+									{else /}
+									</a>
+									<a href="{:url('art/settled')}" class="shenqin fr">申请签约入驻</a>
+									{/if}
+								{/empty}
 							</div>
 						</div>
 						<div class="ywlist clearfix fl" id="float">

@@ -15,12 +15,16 @@ class Login extends Base
 {
     public function sign()
     {
+<<<<<<< HEAD
     	
+=======
+>>>>>>> dev
         $kk = new Base();
         $kk -> zxc();
         return $this->fetch();
     }
 
+    //登录
     public function dl()
     {
         $user = model('User');
@@ -52,8 +56,10 @@ class Login extends Base
           
         }
         if (($data_name->password != md5($password))) {
+            
             return 3;
         }
+<<<<<<< HEAD
         $data_user = $user->selrbac($username);
         if ($data_user == 1 or $data_user == 2) {
             return 4;
@@ -62,6 +68,22 @@ class Login extends Base
             $abc = 'qazxsw';
             session('password',md5(md5($password).$abc), 'think');
             Session::delete('openid');
+=======
+        if ($data_name->is_admin == 1) {
+            return 5;
+        }
+        session('admin',$data_name->is_admin);
+        session('username',$username, 'think');
+        session('uid',$data_name->id);
+        /*$data_user = $user->selrbac($username);
+        if ($data_user == 1 or $data_user == 2) {
+            return 4;
+        }
+          
+            $abc = 'qazxsw';
+            session('password',md5(md5($password).$abc), 'think');
+            Session::delete('openid');*/
+>>>>>>> dev
 
         if (input('post.check') == 1) {
             cookie('username', $username, 3600*3);
@@ -69,6 +91,8 @@ class Login extends Base
         }
        
     }
+    
+    //注册
     public function login()
     {
         $username = input('post.username');
@@ -137,10 +161,13 @@ class Login extends Base
         return $this->fetch();
     }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> dev
     public function bd()
     {
         $user = model('User');
@@ -174,12 +201,21 @@ class Login extends Base
         if (($data_name->password != md5($password))) {
             return 3;
         }
+<<<<<<< HEAD
 
         $data_user = $user->selrbac($username);
         if ($data_user == 1 or $data_user == 2) {
             return 4;
         }
 
+=======
+
+        $data_user = $user->selrbac($username);
+        if ($data_user == 1 or $data_user == 2) {
+            return 4;
+        }
+
+>>>>>>> dev
         $openid = Session::get('openid');
         $idstr = Session::get('idstr');
           if (!empty($openid)) {
@@ -190,9 +226,12 @@ class Login extends Base
     }
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> dev
     public function dx()
     {
     	// dump(123);    

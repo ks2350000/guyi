@@ -20,6 +20,7 @@ class Product extends Base
 	public function brandManage()
 	{
 		$comm = model('Commodity');
+<<<<<<< HEAD
 		$uid = session('uid');
 
 		if (input('sel') == 'sels') {
@@ -34,6 +35,18 @@ class Product extends Base
 		//dump($comData);
 		//die;
 
+=======
+		if (input('sel') == 'sels') {
+			
+			$data = $comm->sel(input('cname'),input('ctime'));
+			$this->assign('comData',$data);
+			
+		} else {
+			$comData = $comm->where('del', 0)->where('close',0)->paginate(2);
+			$this->assign('comData',$comData);
+		}
+
+>>>>>>> dev
 		$count = $comm->where('del', 0)->where('close',0)->select()->count();
 		$this->assign('count',$count);
 		
@@ -70,7 +83,11 @@ class Product extends Base
 	public function branddel()
 	{
 		$comm = model('commodity');
+<<<<<<< HEAD
 		$comData = $comm->where('del', 1)->where('close',0)->paginate(5);
+=======
+		$comData = $comm->where('del', 1)->where('close',0)->paginate(1);
+>>>>>>> dev
 		$count = $comm->where('del', 1)->where('close',0)->select()->count();
 		$this->assign('count',$count);
 		$this->assign('comData',$comData);
@@ -88,7 +105,11 @@ class Product extends Base
 	public function addspecial()
 	{
 		$special = model('Special');
+<<<<<<< HEAD
 		$data = $special->where('uid',session('uid'))->where('clos',0)->select()->toArray();
+=======
+		$data = $special->where('uid',session('ucid'))->where('clos',0)->select()->toArray();
+>>>>>>> dev
 		$this->assign('data',$data);
 
 		return $this->fetch('add_special');
@@ -100,8 +121,13 @@ class Product extends Base
 		//特卖表 商品表
 		$special = model('Special');
 		$comm = model('commodity');
+<<<<<<< HEAD
 		$data = $special->where('uid',session('uid'))->select()->toArray();
 		$commData = $comm->where('uid',session('uid'))->where('speid',0)->where('close',0)->select()->toArray();
+=======
+		$data = $special->where('uid',session('ucid'))->select()->toArray();
+		$commData = $comm->where('uid',session('ucid'))->where('speid',0)->where('close',0)->select()->toArray();
+>>>>>>> dev
 		$this->assign('data',$data);
 		$this->assign('commData',$commData);
 		return $this->fetch('specials');

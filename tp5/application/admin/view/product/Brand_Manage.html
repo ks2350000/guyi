@@ -35,7 +35,11 @@
       <div class="title_names">搜索查询</div>
       <ul class="search_content clearfix">
        <li><label class="l_f">产品名称</label><input name="cname" type="text"  class="text_add" placeholder="输入品牌名称"  style=" width:250px"/></li>
+<<<<<<< HEAD
      
+=======
+       <li><label class="l_f">添加时间</label><input class="inline laydate-icon" name="ctime" id="start" style=" margin-left:10px;"></li>
+>>>>>>> dev
        <li style="width:90px;"><button type="submit" name="sel" value="sels" class="btn_search"><i class="icon-search"></i>查询</button></li>
       </ul>
     </div>
@@ -72,7 +76,11 @@
       {volist name="comData" id="value"}
         <tr>
           <td width="25px"><label><input type="checkbox" name="check" value="{$value.id}" class="ace" ><span class="lbl"></span></label></td>
+<<<<<<< HEAD
           <td width="80px">{$value.number}</td>               
+=======
+          <td width="80px">{$value.num}</td>               
+>>>>>>> dev
           <td width="50px">{$value.num}</td>               
           <td width="250px"><u style="cursor:pointer" class="text-primary" onclick="">{$value.name}</u></td>
           <td width="100px">{$value.dmoney}</td>
@@ -95,7 +103,12 @@
 
           </td>
           <td class="td-manage">
+<<<<<<< HEAD
           <a   href="{:url('prolistaction/stop',['cid'=>$value.id])}" title="下架"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
+=======
+          <a   href="{:url('prolistaction/stop',['cid'=>$value.id])}" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
+          <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
+>>>>>>> dev
           <a title="删除" href="{:url('prolistaction/del',['cid'=>$value.id])}" id="del" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
          </td>
         </tr>
@@ -126,8 +139,14 @@ jQuery(function($) {
           return 'left';
         }
       });
+<<<<<<< HEAD
 
-
+=======
+ laydate({
+    elem: '#start',
+    event: 'focus' 
+});
+>>>>>>> dev
 
 </script>
 

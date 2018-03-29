@@ -20,8 +20,14 @@
   <div class="type_title">产品类型信息</div>
   <div class="" style="margin-left:10px; margin-top: 10px">
   <div class="" style="">
+<<<<<<< HEAD
     <a href="javascript:" class="btn  btn-warning"><i class="icon-edit align-top bigger-125"></i>新增类型</a>
     <a href="javascript:" class="btn  btn-danger"><i class="icon-trash   align-top bigger-125"></i>删除该类型</a>
+=======
+    <a href="javascript:ovid()" class="btn  btn-warning"><i class="icon-edit align-top bigger-125"></i>新增类型</a>
+    <a href="{:url('Categoryxiugai')}" class="btn  btn-success"><i class="icon-ok align-top bigger-125"></i>禁用该类型</a>
+    <a href="javascript:ovid()" class="btn  btn-danger"><i class="icon-trash   align-top bigger-125"></i>删除该类型</a>
+>>>>>>> dev
   </div>
 
 
@@ -29,7 +35,11 @@
       <div class="Operate_cont clearfix">
       <label class="form-label"><span class="c-red">*</span>选择分类：</label>
         <div class="formControls ">
+<<<<<<< HEAD
           <select name="select" class="input-text" id="selxl" style="margin-left:10px; width: 170px;">
+=======
+          <select name="select" class="input-text" style="margin-left:10px; width: 170px;">
+>>>>>>> dev
             <option value="0"></option>
             {volist name="data" id="val"}
             <option value="{$val.cgid}">{$val.level}{$val.cgname}</option>            
@@ -106,7 +116,10 @@ $(function(){
               case 2:
                 alert('提交成功');
                 break;
+<<<<<<< HEAD
               
+=======
+>>>>>>> dev
           }
         }
       })
@@ -115,6 +128,7 @@ $(function(){
   $('#user-name').on('click',function() {
     $('#xs').css('display','none');
   })
+<<<<<<< HEAD
 
   $('.btn-danger').click(function(){
     dataname = $("#selxl").val();
@@ -135,4 +149,6 @@ $(function(){
     }
   });
     
+=======
+>>>>>>> dev
 </script>

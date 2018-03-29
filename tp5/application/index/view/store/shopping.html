@@ -4,6 +4,10 @@
 		<!--Main-wrap-->
 		<div class="main-wrap graybg">
 			<div class="wrapper">
+				{if condition="$sData eq 0"}
+							没有商品
+				{else /}
+				<form action="{:url('fund/gouwuche')}" method="post">
 				<div class="shopping-list pt40 pb40">
 					<table class="table_1 table_shopping white-box">
 						<tr>
@@ -13,60 +17,97 @@
 							<th width="14%">小计(元)</th>
 							<th width="14%">操作</th>
 						</tr>
+						
+						{volist name="sData" id="vol"}
 						<tr>
 							<td>
-
 								<p class="o-goods-info ml20 clearfix pt10 pb10">
-									<a href="#" class="fl"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""></span></a>
-									<span class="fl tit mt5 ml10">互点农场五常大米 长粒香 御品国珍五常香米 5KG</span>
+									<a href="#" class="fl"><span><img src="{$vol.pic_name}" alt=""></span></a>
+									<span class="fl tit mt5 ml10">{$vol.cname}</span>
 								</p>
 							</td>
-							<td>29.90</td>
+							<td>{$vol.cmoney}.00元</td>
 							<td>
 								<p class="count clearfix">
-									<a href="javascript:" class="fl fs30 reduction">-</a>
-									<input type="text" value="" class="fl fs16" placeholder="1">
-									<a href="javascript:" class="fl fs30 add">+</a>
+									<a href="javascript:" id="sub" class="fl fs30 reduction">-</a>
+									<input type="text" id="bookNum" name="num[]" value="{$vol.snum}" class="fl fs16" placeholder="1">
+									<a href="javascript:" id="add" class="fl fs30 add">+</a>
 								</p>
 							</td>
-							<td><span class="orange">29.90</span></td>
+							<input type="hidden" name="cid[]" value="{$vol.cid}">
+							
+							<td><span class="orange">{$vol.snum * $vol.cmoney}.00元</span></td>
 							<td>
-								<a href="#"><i class="iconfont fs26">&#xe60b;</i></a>
+								<a href="{:url('del/shoppdel',['sid'=>$vol.sid])}"><i class="iconfont fs26">&#xe60b;</i></a>
 							</td>
 						</tr>
-						<tr>
-							<td>
-
-								<p class="o-goods-info ml20 clearfix pt10 pb10">
-									<a href="#" class="fl"><span><img src="__PUBLIC_INDEX__/upload/2.jpg" alt=""></span></a>
-									<span class="fl tit mt5 ml10">互点农场五常大米 长粒香 御品国珍五常香米 5KG</span>
-								</p>
-							</td>
-							<td>29.90</td>
-							<td>
-								<p class="count clearfix">
-									<a href="javascript:" class="fl fs30 reduction">-</a>
-									<input type="text" value="" class="fl fs16" placeholder="1">
-									<a href="javascript:" class="fl fs30 add">+</a>
-								</p>
-							</td>
-							<td><span class="orange">29.90</span></td>
-							<td>
-								<a href="#"><i class="iconfont fs26">&#xe60b;</i></a>
-							</td>
-						</tr>
+						
+						{/volist}
 					</table>
 					<div class="shopping-result white-box mt20 clearfix">
 						<a href="#" class="fl fs16 pl10">继续购物>></a>
+						<input type="hidden" name="zj" value="{$money}">
 						<p class="fr">
-							<a href="jiesuan.html" class="fr orange-but fs20">去结算</a>
-							<span class="fr pr20 fs14">总计：<em class="orange fs24">¥29.90</em></span>
+							<button type="submit" name="js" value="jsjs" class="fr orange-but fs20">去结算</button>
+							<span class="fr pr20 fs14">总计：<em class="orange fs24">¥{$money}.00</em></span>
 						</p>
 					</div>
-
+				
 				</div>
+				</form>
+				{/if}
 			</div>
 		</div>
 		<!--/end-->
 
 {include file="../application/index/view/public/footer.html" /}
+{if condition="$sData eq 0"}
+	
+{else /}
+<script type="text/javascript">
+	
+	$('#bookNum').keypress(function(b) {
+		        var keyCode = b.keyCode ? b.keyCode : b.charCode;
+		        if (keyCode != 0 && (keyCode < 48 || keyCode > 57) && keyCode != 8 && keyCode != 37 && keyCode != 39) {
+		            return false;
+		        } else {
+		            return true;
+		        }
+
+		    }).keyup(function(e) {
+		        var keyCode = e.keyCode ? e.keyCode : e.charCode;
+		        console.log(keyCode);
+		        if (keyCode != 8) {
+		            var numVal = parseInt($("#bookNum").val()) || 0;
+		            numVal = numVal < 1 ? 1 : numVal;
+		            $("#bookNum").val(numVal);
+		        }
+		    }).blur(function() {
+		        var numVal = parseInt($("#bookNum").val()) || 0;
+		        numVal = numVal < 1 ? 1 : numVal;
+		        $("#bookNum").val(numVal);
+		    });
+
+		
+		    $('#add').click(function() {
+			   
+			    if ($("#bookNum").val()>={$vol.cnum}) {
+			    	$("#bookNum").val() = {$vol.cnum};
+			    }else {
+			    	var num = parseInt($("#bookNum").val()) || 0;
+			    	$("#bookNum").val(num + 1);
+			    }
+			    
+			});
+		
+			//减去
+			$("#sub").click(function() {
+			    var num = parseInt($("#bookNum").val()) || 0;
+			    num = num - 1;
+			    num = num < 1 ? 1 : num;
+			    $("#bookNum").val(num);
+			});
+
+		
+</script>
+{/if}
