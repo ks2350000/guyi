@@ -8,8 +8,7 @@ use think\Db;
 
 class Base extends Controller
 {
-<<<<<<< HEAD
-=======
+
 	public function construct() 
 	{
 		if (empty(session('name'))) {
@@ -23,7 +22,6 @@ class Base extends Controller
 		}
 	}
 
->>>>>>> dev
 	protected function getSubs($categorys,$catId=0,$level=1)
 	{ 
 
@@ -41,12 +39,9 @@ class Base extends Controller
 		return $subs; 
 	} 
 
-<<<<<<< HEAD
-	protected function getParents($categorys,$catId){ 
-=======
+
 	protected function getParents($categorys,$catId)
 	{ 
->>>>>>> dev
 		$tree=array(); 
 			foreach($categorys as $item){ 
 				if($item['cid']==$catId){ 
@@ -59,7 +54,7 @@ class Base extends Controller
 			return $tree; 
 	} 
 
-<<<<<<< HEAD
+
 	public function rbac()
 	{
 		$openid = Session::get('openid');
@@ -97,9 +92,5 @@ class Base extends Controller
 			$this->redirect('/');
 		}
 	}
-=======
-	
 
-
->>>>>>> dev
 }
