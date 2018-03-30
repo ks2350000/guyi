@@ -26,8 +26,6 @@ class User extends Model
 
 		return $access_id;
 	}
-<<<<<<< HEAD
-=======
 
 	public function up()
 	{
@@ -91,5 +89,5 @@ class User extends Model
 			return $this->where('id',session('uid'))->update($data);
 		}	
 	}
->>>>>>> dev
+
 }

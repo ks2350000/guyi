@@ -5,15 +5,7 @@ use think\Db;
 use think\Controller;
 use app\index\model\Store as StoreModel;
 use app\index\common\Base;
-<<<<<<< HEAD
 
-class Store extends Controller
-{
-	public function mall()
-    {
-      $kk = new Base();
-    	$kk -> zxc();
-=======
 use think\Page;
 //商城
 class Store extends Controller 
@@ -59,17 +51,13 @@ class Store extends Controller
         }
 
         $this->assign('cdata',$cate_data);
->>>>>>> dev
+
     	return $this->fetch();
     }
 
     public function shopping()
     {
-<<<<<<< HEAD
-      $kk = new Base();
-    	$kk -> zxc();
-    	return $this->fetch();
-=======
+
         $kk = new Base();
     	$kk -> zxc();
         if (empty(session('username'))) {
@@ -122,7 +110,7 @@ class Store extends Controller
             $this->assign('data',$page);
 
         } 
->>>>>>> dev
+
     }
   
 }

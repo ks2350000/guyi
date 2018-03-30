@@ -7,33 +7,23 @@ use app\index\common\Base;
 use page\Page;
 use app\index\model\Geren as GerenModel;
 
-<<<<<<< HEAD
-use app\index\model\Geren as GerenModel;
-
-=======
->>>>>>> dev
 class Geren extends Controller
 {
 	public function grxx()
     {
        $kk = new Base();
       $kk -> zxc();
-<<<<<<< HEAD
-=======
       $user = model('User');
       $userData = $user->where('name',session('username'))->select();
       
       $this->assign('data',$userData);
->>>>>>> dev
+
       return $this->fetch();
     }
 
     public function shdz()
     {
-<<<<<<< HEAD
-       $kk = new Base();
-      $kk -> zxc();
-=======
+
       $kk = new Base();
       $kk -> zxc();
       $site = model('Site');
@@ -41,7 +31,7 @@ class Geren extends Controller
                     ->where('close',0)
                     ->select()->toArray();
       $this->assign('siteData',$data);
->>>>>>> dev
+
       return $this->fetch();
     }
 
@@ -57,10 +47,7 @@ class Geren extends Controller
     {
        $kk = new Base();
       $kk -> zxc();
-<<<<<<< HEAD
-=======
-     
->>>>>>> dev
+
       return $this->fetch();
     }
 
@@ -69,8 +56,7 @@ class Geren extends Controller
        $kk = new Base();
       $kk -> zxc();
       return $this->fetch();
-<<<<<<< HEAD
-=======
+
     }
 
     public function pages()
@@ -97,7 +83,7 @@ class Geren extends Controller
         $url = $page->allPage();
         $arr = ['user'=>$users, 'url'=>$url];
         echo json_encode($arr);
->>>>>>> dev
+
     }
 
 }

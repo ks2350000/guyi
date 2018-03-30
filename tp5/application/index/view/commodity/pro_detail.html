@@ -47,20 +47,7 @@
 								<li><span>数      量 ：</span>{$comdata[0]['num']}</li>
 							</ul>
 						</div>
-<<<<<<< HEAD
-						<div class="pt10">
-							<div class="p-count fs14 mt20 clearfix">
-								<label class="fl lh40 darkblack">数量：</label>
-								<p class="fl count ml10 clearfix">
-									<a href="javascript:" class="fl fs30 reduction">-</a>
-									<input type="text" value="" class="fl fs16" placeholder="1">
-									<a href="javascript:" class="fl fs30 add">+</a>
-								</p>
-							</div>
-							<div class="but-box mt30">
-								<input type="button" class="fl orange-but radius3" onclick="mai()" value="立即购买">
-								<input type="button" class="fl ml20 orange-but gray-but radius3" value="加入购物车">
-=======
+
 						<form action="{:url('fund/jiesuan')}" id="che" method="post">
 							<input type="hidden" name="comid" value="{$comdata[0]['id']}">
 							<div class="pt10">
@@ -76,7 +63,7 @@
 									<button type="submit" class="fl orange-but radius3" value="">立即购买</button>
 									<button type="button" id="gouwu" class="fl ml20 orange-but  radius3" value="">加入购物车</button>
 								</div>
->>>>>>> dev
+
 							</div>
 						</form>
 					</div>
@@ -148,18 +135,17 @@
 		<!--/end-->
 		{include file="../application/index/view/public/footer.html" /}
 		<script type="text/javascript">
-<<<<<<< HEAD
-			function mai()
-=======
+
+
 		/*	function mai()
->>>>>>> dev
+
 			{
 				$.ajax({
 				type:'POST',
 				url:"{:url('mai')}",
 				data:"",
 				success:function(data){
-<<<<<<< HEAD
+
 					console.log(data);
 					switch (data) {
 						case 3:
@@ -176,8 +162,7 @@
 			})
 				
 			}
-		</script>
-=======
+
 						console.log(data);
 						switch (data) {
 							case 3:
@@ -273,4 +258,4 @@
         }  
         })  
 </script>
->>>>>>> dev
+

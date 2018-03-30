@@ -1,10 +1,6 @@
 <?php
 namespace app\index\model;
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> dev
 use think\Model;
 
 class Commodity extends Model
@@ -27,11 +23,7 @@ class Commodity extends Model
 		$id = $arr['0']['id'];
 		$arr1 = db('role_access')->where('role_id',$id)->select();
 		$access_id = $arr1['0']['access_id'];
-<<<<<<< HEAD
 
-		return $access_id;
-	}
-=======
 		return $access_id;
 	}
 
@@ -262,5 +254,5 @@ class Commodity extends Model
                 ->select()->toArray();
     }
 
->>>>>>> dev
+
 }

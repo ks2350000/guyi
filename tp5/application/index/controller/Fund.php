@@ -35,8 +35,7 @@ class Fund extends Controller
     {
       $kk = new Base();
       $kk -> zxc();
-<<<<<<< HEAD
-=======
+
       /*dump(input());
       die();*/
       $kk->renzheng();
@@ -58,7 +57,6 @@ class Fund extends Controller
       $this->assign('cid',$cid);
       $this->assign('siteData',$siteData);
 
->>>>>>> dev
       return $this->fetch();
     }
 
@@ -67,9 +65,7 @@ class Fund extends Controller
     {
       $kk = new Base();
       $kk -> zxc();
-<<<<<<< HEAD
-      return $this->fetch();
-=======
+
       //获取url传来的参数
       $res = request()->param();
       $comid = $res['comid'];
@@ -186,6 +182,6 @@ class Fund extends Controller
       $this->assign('compirce',$zj);
       $this->assign('num',$cn);
       return $this->fetch('fukuangouwuche');
->>>>>>> dev
+
     }
 }

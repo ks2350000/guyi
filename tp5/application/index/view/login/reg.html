@@ -21,11 +21,9 @@
 			</div>
 			<div class="bottom clearfix box-s ra10">
 				<div class="sign-logo clearfix">
-<<<<<<< HEAD
-					<img src="__PUBLIC_INDEX__/img/yuanlogo.png"/>
-=======
+
 					<img src="__STATIC__/img/yuanlogo.png"/>
->>>>>>> dev
+
 				</div>
 				<div class="content clearfix">
 					<form action="{:url('index/index')}" method="post" id="form_tj">
@@ -103,11 +101,9 @@
 				data:$("#form_tj").serialize(),
 				dataType:"JSON",
 				success:function(data){
-<<<<<<< HEAD
-					console.log(data);
-=======
+
 					//console.log(data);
->>>>>>> dev
+
 					switch (data) {
 						case'名称必须':
 							$('#user').attr('placeholder','请输入用户名');
@@ -174,15 +170,13 @@
 							$('#phonenum').attr('placeholder','手机验证码错误');
 							$('#phonenum').addClass('us');
 							break;
-<<<<<<< HEAD
+
 						case '5':
 							$('#phonenum').attr('value','');
 							$('#phonenum').attr('placeholder','到这里没问题');
 							$('#phonenum').addClass('us');
 							break;
-=======
-						
->>>>>>> dev
+
 						default:
 							window.location.href = "{:url('index/index')}";
 							break;
@@ -193,13 +187,7 @@
 		})
 
 
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> dev
 		$('.xs').mousedown(function() {
 			$('.xs').removeClass('us');
 		})
@@ -227,11 +215,9 @@
             	return;
             }
             sess = 1;
-<<<<<<< HEAD
-            var time = 3;
-=======
+
             var time = 30;
->>>>>>> dev
+
 			var timer = setInterval(function () {
 				if (time <= 0 ) {
 					$("#sunbtn").html('重新发送');

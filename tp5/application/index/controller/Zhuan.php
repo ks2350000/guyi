@@ -6,19 +6,13 @@ use think\Controller;
 use think\Session;
 use app\index\model\Zhuan as ZhuanModel;
 use app\index\common\Base;
-<<<<<<< HEAD
 
-=======
 use think\Page;
->>>>>>> dev
+
 class Zhuan extends Controller
 {
 	public function special()
     {
-<<<<<<< HEAD
-       $kk = new Base();
-    	$kk -> zxc();
-=======
         $kk = new Base();
     	$kk -> zxc();
         $spe = model('Special');
@@ -29,16 +23,12 @@ class Zhuan extends Controller
         $this->assign('speData',$page);
         $this->assign('comData',$comData);
 
->>>>>>> dev
     	return $this->fetch();
     }
 
     public function special_detail()
     {
-<<<<<<< HEAD
-       $kk = new Base();
-    	$kk -> zxc();
-=======
+
         $kk = new Base();
     	$kk -> zxc();
         $spid = request()->param()['spid'];
@@ -59,7 +49,6 @@ class Zhuan extends Controller
         $this->assign('xiaoliang',$page2);
         $this->assign('spe',$speData);
 
->>>>>>> dev
     	return $this->fetch();
     }
 

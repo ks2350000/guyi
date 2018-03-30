@@ -15,10 +15,6 @@ class Base extends Controller
            'openid'=>Session::get('openid')
         ]);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
     	if (!empty(Session::get('username'))) {
     		$this->rbac();
     	}
@@ -29,11 +25,10 @@ class Base extends Controller
 		$openid = Session::get('openid');
 		$idstr = Session::get('idstr');
 		$name = Session::get('username');
-<<<<<<< HEAD
+
 		dump(Session::get());
-=======
-		//dump(Session::get());
->>>>>>> dev
+
+
 
 		
 		$result = Db::name('user')
@@ -52,7 +47,7 @@ class Base extends Controller
 				$this->redirect('Login/bangding');
 			}
 		}
-<<<<<<< HEAD
+
 
 		$id = $result[0]['id'];
 		$password = $result[0]['password'];
@@ -63,10 +58,10 @@ class Base extends Controller
 		session('acce_id',$acce_id);
 		session('password',$password);
 
-=======
+
 	}
 
-	public function renzheng()
+	/*public function renzheng()
 	{
 		if (empty(session('username'))) {
 			$this->redirect('login/sign');
@@ -77,6 +72,6 @@ class Base extends Controller
 				$this->redirect('login/sign');
 			}
 		}
->>>>>>> dev
-	}
+
+	}*/
 }

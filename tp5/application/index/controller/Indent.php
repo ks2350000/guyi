@@ -5,17 +5,7 @@ use think\Db;
 use think\Controller;
 use app\index\model\Indent as IndentModel;
 use app\index\common\Base;
-<<<<<<< HEAD
 
-class Indent extends Controller
-{
-	public function wddd()
-    {
-       $kk = new Base();
-      $kk -> zxc();
-      return $this->fetch();
-    }
-=======
 use page\Page;
 class Indent extends Controller
 { 
@@ -35,7 +25,7 @@ class Indent extends Controller
       $this->assign('pic',$pic);
       return $this->fetch();
     } 
->>>>>>> dev
+
 
     public function sqsh()
     {
@@ -49,12 +39,8 @@ class Indent extends Controller
     {
        $kk = new Base();
       $kk -> zxc();
-<<<<<<< HEAD
-=======
-
       $buy = model('Buy');
      
->>>>>>> dev
       return $this->fetch();
     }
 
@@ -62,8 +48,7 @@ class Indent extends Controller
     {
        $kk = new Base();
       $kk -> zxc();
-<<<<<<< HEAD
-=======
+
       //查询商品
       $comm = model('Commodity');
       $cmid = request()->param()['cmid'];
@@ -79,8 +64,7 @@ class Indent extends Controller
        $kk = new Base();
       $kk -> zxc();
       //查询商品
-     
->>>>>>> dev
+ 
       return $this->fetch();
     }
 
@@ -89,8 +73,7 @@ class Indent extends Controller
        $kk = new Base();
       $kk -> zxc();
       return $this->fetch();
-<<<<<<< HEAD
-=======
+
     }
 
     public function pages()
@@ -141,6 +124,6 @@ class Indent extends Controller
         $url = $page->allPage();
         $arr = ['user'=>$users, 'url'=>$url];
         echo json_encode($arr);
->>>>>>> dev
+
     }
 }
